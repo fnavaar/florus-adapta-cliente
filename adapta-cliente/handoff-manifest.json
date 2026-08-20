@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "adapta-cliente-handoff/v1",
+  "phase": 1,
+  "versions": {
+    "package": "0.1.0",
+    "adapta": "0.7.0",
+    "adaptaCliente": "0.2.0"
+  },
+  "generatedAt": "2026-08-20T15:51:27.674Z",
+  "files": [
+    {
+      "path": "04_fase-atual/README.md",
+      "sha256": "57843f15414253dfbcc46b12fc0860f4aa0481fefdd8440eca68b80a3663f4cc",
+      "classification": "template-publico"
+    },
+    {
+      "path": "04_fase-atual/fase.md",
+      "sha256": "8cf61cc7664eb0b7bfbe41a67d03cbe8686e908e29f4f797e341af6b63fb2c76",
+      "classification": "fase-atual"
+    },
+    {
+      "path": "04_fase-atual/specs/spec-1-001-entrada-pedido-orcamento.md",
+      "sha256": "df8ca7a4cf7775eb28274a9d5d2908f82a9dd81a1128dd2f4fb4128592f5e73a",
+      "classification": "spec-fase-atual"
+    },
+    {
+      "path": "04_fase-atual/specs/spec-1-002-pipe-tags-dashboard.md",
+      "sha256": "5843ff250b74eacee5004386b9ad19ff7cf0a2782084a1d241ed67adb52536a6",
+      "classification": "spec-fase-atual"
+    },
+    {
+      "path": "04_fase-atual/specs/spec-1-003-rls-auditoria-recuperacao.md",
+      "sha256": "97704adb595c34b795a741d1bea54db5722810d314f4c987f657da7c52aee24b",
+      "classification": "spec-fase-atual"
+    },
+    {
+      "path": "04_fase-atual/specs/spec-1-004-baseline-metricas.md",
+      "sha256": "6dcae62f8c785c2f8d80872f36f9f89eae28e85a15b2887d605b535a8f156463",
+      "classification": "spec-fase-atual"
+    }
+  ]
+}
