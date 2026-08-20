@@ -10,6 +10,7 @@ Florus — na execução das tarefas da fase atual.
 - **Objetivo:** reduzir o tempo e o retrabalho no processo comercial, medindo tempo de proposta e acurácia com eventos rastreáveis.
 - **Processo atacado:** entrada de pedido/orçamento, pipe comercial, priorização, acesso e baseline.
 - **Consultor responsável:** consultoria Adapta, conforme acompanhamento do projeto.
+- **Repo do cliente:** https://github.com/fnavaar/florus-adapta-cliente
 - **Fase atual e progresso:** ver `STATUS.md`
 
 ## Como o trabalho funciona aqui

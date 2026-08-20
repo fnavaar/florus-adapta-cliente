@@ -2,6 +2,8 @@
 
 > **Atualizado em:** 2026-08-20 · **Por:** consultoria Adapta
 
+**Repo do cliente:** https://github.com/fnavaar/florus-adapta-cliente
+
 ## Onde estamos
 
 - **Fase atual:** 1 — entrada estruturada, pedido/orçamento, qualificação e priorização · aberta em 2026-08-20 · reunião de fechamento a definir
