@@ -1,13 +1,13 @@
 # Estado atual — Adapta Cliente
 
-- task_id: T-F1-001
+- task_id: T-F1-002
 - champion: Fábio
 - spec: 04_fase-atual/specs/spec-1-001-entrada-pedido-orcamento.md
-- etapa: concluida
-- autorizacao_implementacao: confirmada + 2026-08-20T18:03:00-03:00 + "Execute a tarefa, mas troque o lead pelo vendedor"
-- teste_humano: aprovado + 2026-08-26 + "Ficou ótimo... Trave o sistema até aqui. Só mude quando eu pedir"
-- verificacao_automatica: passou + build e testes OK (v0.0.26)
-- aprendizado: capturado:06_notas/aprendizado-continuo/AP-2026-08-27-1600-numero-pedido-sequencial.md
-- ultima_acao: Repositório atualizado: STATUS, fase.md, 05_entregas/T-F1-001, changelog, estado e aprendizado
-- proxima_acao: Aguardar champion selecionar T-F1-002 (ou ordem direta)
-- atualizado_em: 2026-08-27T16:00:00-03:00
+- etapa: aguardando_teste_humano
+- autorizacao_implementacao: confirmada + 2026-08-27T17:30:00-03:00 + "pode executar" (após relatório de análise do progresso)
+- teste_humano: pendente
+- verificacao_automatica: passou + build e testes OK (v0.0.28)
+- aprendizado: pendente
+- ultima_acao: T-F1-002 implementada: validação de formato (CNPJ/e-mail/celular) com estado revisao_necessaria, detecção de duplicidade por CNPJ/razão social, preservação de sessão e mapeamento de campos legados obrigatórios para permitir a criação (v0.0.28)
+- proxima_acao: Aguardar teste humano do caminho de revisão e duplicidade
+- atualizado_em: 2026-08-27T18:00:00-03:00
