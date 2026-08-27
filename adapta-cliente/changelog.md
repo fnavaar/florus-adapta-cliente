@@ -7,7 +7,7 @@
 
 ## Registro
 
-- 2026-08-27 · [Bob/ETHOS] · T-F1-002 implementada no SKIP (v0.0.28): validação de formato separada de ausência (CNPJ/e-mail/celular → estado `revisao_necessaria`, nunca desqualifica), detecção de duplicidade por CNPJ/razão social antes do create (bloqueia segundo cadastro automático), preservação de sessão expirada com aviso e rascunho mantido, mapeamento de campos legados obrigatórios que impedia a criação. QA automático OK (setup, static, build, integrations, test). Aguardando teste humano.
+- 2026-08-27 · [champion] · Task T-F1-002 concluída: validação de formato (revisao_necessaria), duplicidade e preservação de sessão aprovadas no teste humano. v0.0.28.
 - 2026-08-27 · [Bob/ETHOS] · Repositório atualizado: STATUS.md, fase.md (T-F1-001 → Concluída), 05_entregas/T-F1-001-entrada-pedido-orcamento.md criado, changelog e estado persistente.
 - 2026-08-26 · [Bob/ETHOS] · Sistema travado pelo champion até "Necessidade de investimento para esse projeto" (v0.0.26). Dados Complementares: "Data para o projeto estar pronto" (campo date + tempo restante em meses exato/intervalo) e "Como você chegou até a Florus?". Ajuste do cálculo de investimento com parse de valores brasileiros (v0.0.22) e resumo sempre visível (v0.0.21).
 - 2026-08-26 · [Bob/ETHOS] · T-F1-001 encerrada e aprovada pelo champion: formulário de pedido completo no SKIP (login, lista, formulário com Dados do Cliente/Endereço/Contato/Avaliação do Pedido/Resumo/Dados Complementares), número de pedido AAAAMMDD-####, tabela de produtos dinâmica e resumo de investimento.
