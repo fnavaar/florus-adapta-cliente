@@ -7,6 +7,7 @@
 
 ## Registro
 
+- 2026-08-27 · [Bob/ETHOS] · T-F1-003 implementada no SKIP (v0.0.29): visão de leitura do pedido pelo vendedor (DetalhePedido) — mostra dados já registrados, distingue campos presentes/ausentes/formato inválido e exibe próxima ação de handoff; rota detalhe no Index. QA OK. Aguardando teste humano.
 - 2026-08-27 · [champion] · Task T-F1-002 concluída: validação de formato (revisao_necessaria), duplicidade e preservação de sessão aprovadas no teste humano. v0.0.28.
 - 2026-08-27 · [Bob/ETHOS] · Repositório atualizado: STATUS.md, fase.md (T-F1-001 → Concluída), 05_entregas/T-F1-001-entrada-pedido-orcamento.md criado, changelog e estado persistente.
 - 2026-08-26 · [Bob/ETHOS] · Sistema travado pelo champion até "Necessidade de investimento para esse projeto" (v0.0.26). Dados Complementares: "Data para o projeto estar pronto" (campo date + tempo restante em meses exato/intervalo) e "Como você chegou até a Florus?". Ajuste do cálculo de investimento com parse de valores brasileiros (v0.0.22) e resumo sempre visível (v0.0.21).
