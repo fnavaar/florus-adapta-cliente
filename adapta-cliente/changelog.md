@@ -7,6 +7,7 @@
 
 ## Registro
 
+- 2026-09-01 · [champion] · Nova ordem: criar a seção **Cotação** no sistema, derivando uma linha por produto da Avaliação do Pedido, com colunas ID, descrição, mL/g/barra, valor unitário, quantidade, total da produção, valor da Anvisa e subtotal. Cálculos serão explicados pelo champion. Especificação registrada em 06_notas/cotacao-especificacao-v1.md. **Bloqueada até o MCP do Skip reconectar** (sem ferramentas de edição do projeto).
 - 2026-08-28 · [champion] · Task T-F1-003 concluída: handoff ao vendedor aprovado no teste humano. v0.0.29. SPEC-1-001 completa (3/3).
 - 2026-08-27 · [champion] · Task T-F1-002 concluída: validação de formato (revisao_necessaria), duplicidade e preservação de sessão aprovadas no teste humano. v0.0.28.
 - 2026-08-27 · [Bob/ETHOS] · Repositório atualizado: STATUS.md, fase.md (T-F1-001 → Concluída), 05_entregas/T-F1-001-entrada-pedido-orcamento.md criado, changelog e estado persistente.
