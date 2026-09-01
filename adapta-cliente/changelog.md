@@ -7,7 +7,9 @@
 
 ## Registro
 
-- 2026-09-01 · [champion] · Nova ordem: criar a seção **Cotação** no sistema, derivando uma linha por produto da Avaliação do Pedido, com colunas ID, descrição, mL/g/barra, valor unitário, quantidade, total da produção, valor da Anvisa e subtotal. Cálculos serão explicados pelo champion. Especificação registrada em 06_notas/cotacao-especificacao-v1.md. **Bloqueada até o MCP do Skip reconectar** (sem ferramentas de edição do projeto).
+- 2026-09-01 · [Bob/ETHOS] · Cotação implementada no SKIP (v0.0.30): tabela de custos importada da planilha jan-2025 (100 produtos, src/data/tabela-custos.json), componente Cotacao.tsx calculando custo unitário = (valor do kg ÷ 1000) × tamanho + mão de obra (G ≤300 mL / H >300 mL), total produção = unitário × qtd e subtotal = produção + Anvisa. Verificado na preview: 12479 200mL → R$ 12,32 e 500mL → R$ 27,30. Especificação em 06_notas/cotacao-especificacao-v2.md.
+- 2026-09-01 · [champion] · Regras de cálculo do custo unitário explicadas: (valor do kg ÷ 1000) × tamanho da embalagem + mão de obra (coluna G ≤300 mL, coluna H >300 mL). Planilha Tabela de Preços de Produtos jan-2025 enviada.
+- 2026-09-01 · [champion] · Nova ordem: criar a seção **Cotação** no sistema, derivando uma linha por produto da Avaliação do Pedido, com colunas ID, descrição, mL/g/barra, valor unitário, quantidade, total da produção, valor da Anvisa e subtotal.
 - 2026-08-28 · [champion] · Task T-F1-003 concluída: handoff ao vendedor aprovado no teste humano. v0.0.29. SPEC-1-001 completa (3/3).
 - 2026-08-27 · [champion] · Task T-F1-002 concluída: validação de formato (revisao_necessaria), duplicidade e preservação de sessão aprovadas no teste humano. v0.0.28.
 - 2026-08-27 · [Bob/ETHOS] · Repositório atualizado: STATUS.md, fase.md (T-F1-001 → Concluída), 05_entregas/T-F1-001-entrada-pedido-orcamento.md criado, changelog e estado persistente.
