@@ -7,9 +7,11 @@
 
 ## Registro
 
+- 2026-09-09 · [champion] · Task T-F1-004 concluída: pipe local e dashboard operacional validados no teste humano; login, salvamento do pedido e visualização na Pipe/Dashboard funcionaram. QA v0.0.35 aprovado. Sincronização real com DataCrazy permanece pendente de configuração segura de chave e IDs da conta.
+- 2026-09-09 · [Bob/ETHOS] · DEBUG task T-F1-004: lead fictício não aparecia → causa raiz: autenticação retornava 200, mas o frontend não mudava da tela de login nem iniciava consultas de pedidos → corrigido no Login.tsx com redirecionamento após autenticação.
 - 2026-09-02 · [champion] · Nova ordem: incluir seção **"Sobre o projeto"** antes de "Avaliação do Pedido", com texto explicativo (perguntas-guia) para o vendedor descrever o projeto do cliente (usado para gerar a apresentação da proposta). Especificação registrada em 06_notas/sobre-o-projeto-especificacao-v1.md. **Bloqueada até o MCP do Skip reconectar.**
 - 2026-09-01 · [Bob/ETHOS] · Cotação implementada no SKIP (v0.0.30→0.0.32): tabela de custos importada da planilha jan-2025 (100 produtos, src/data/tabela-custos.json), componente Cotacao.tsx calculando custo unitário = (valor do kg ÷ 1000) × tamanho + mão de obra (G ≤300 mL / H >300 mL), total produção = unitário × qtd e subtotal = produção + Anvisa. Sugestões de produtos compatíveis ordenadas por proximidade do objetivo de custo, com seleção pelo vendedor (v0.0.32). Verificado na preview: shampoo obj R$12,00 → Shampoo Hidratante Premium Vegano R$12,26/un.
-- 2026-09-01 · [champion] · Regras de cálculo do custo unitário explicadas: (valor do kg ÷ 1000) × tamanho da embalagem + mão de obra (coluna G ≤300 mL, coluna H >300 mL). Planilha Tabela de Preços de Produtos jan-2025 enviada.
+- 2026-09-01 · [champion] · Regras de cálculo do custo unitário explicadas: (valor_kg ÷ 1000) × tamanho da embalagem + mão de obra (coluna G ≤300 mL, coluna H >300 mL). Planilha Tabela de Preços de Produtos jan-2025 enviada.
 - 2026-09-01 · [champion] · Nova ordem: criar a seção **Cotação** no sistema, derivando uma linha por produto da Avaliação do Pedido, com colunas ID, descrição, mL/g/barra, valor unitário, quantidade, total da produção, valor da Anvisa e subtotal.
 - 2026-08-28 · [champion] · Task T-F1-003 concluída: handoff ao vendedor aprovado no teste humano. v0.0.29. SPEC-1-001 completa (3/3).
 - 2026-08-27 · [champion] · Task T-F1-002 concluída: validação de formato (revisao_necessaria), duplicidade e preservação de sessão aprovadas no teste humano. v0.0.28.
