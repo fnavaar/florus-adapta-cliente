@@ -7,6 +7,7 @@
 
 ## Registro
 
+- 2026-09-10 · [champion] · Task T-F1-005 concluída: cenários locais de timeout, API indisponível, duplicidade e reconciliação foram testados e aprovados; nenhum segundo registro foi criado e não houve chamada real ao DataCrazy. QA v0.0.37 aprovado.
 - 2026-09-09 · [champion] · Task T-F1-004 concluída: pipe local e dashboard operacional validados no teste humano; login, salvamento do pedido e visualização na Pipe/Dashboard funcionaram. QA v0.0.35 aprovado. Sincronização real com DataCrazy permanece pendente de configuração segura de chave e IDs da conta.
 - 2026-09-09 · [Bob/ETHOS] · DEBUG task T-F1-004: lead fictício não aparecia → causa raiz: autenticação retornava 200, mas o frontend não mudava da tela de login nem iniciava consultas de pedidos → corrigido no Login.tsx com redirecionamento após autenticação.
 - 2026-09-02 · [champion] · Nova ordem: incluir seção **"Sobre o projeto"** antes de "Avaliação do Pedido", com texto explicativo (perguntas-guia) para o vendedor descrever o projeto do cliente (usado para gerar a apresentação da proposta). Especificação registrada em 06_notas/sobre-o-projeto-especificacao-v1.md. **Bloqueada até o MCP do Skip reconectar.**
@@ -19,5 +20,5 @@
 - 2026-08-26 · [Bob/ETHOS] · Sistema travado pelo champion até "Necessidade de investimento para esse projeto" (v0.0.26). Dados Complementares: "Data para o projeto estar pronto" (campo date + tempo restante em meses exato/intervalo) e "Como você chegou até a Florus?". Ajuste do cálculo de investimento com parse de valores brasileiros (v0.0.22) e resumo sempre visível (v0.0.21).
 - 2026-08-26 · [Bob/ETHOS] · T-F1-001 encerrada e aprovada pelo champion: formulário de pedido completo no SKIP (login, lista, formulário com Dados do Cliente/Endereço/Contato/Avaliação do Pedido/Resumo/Dados Complementares), número de pedido AAAAMMDD-####, tabela de produtos dinâmica e resumo de investimento.
 - 2026-08-25 · [Bob/ETHOS] · Fase de avaliação do pedido iniciada: tabela dinâmica de produtos (v0.0.13). Cada linha: Produto, Tamanho (mL/g), Objetivo de custo, Quantidade, Referência de mercado. Botão "Mesmo produto, novo tamanho" para múltiplas entradas. Campo "É o decisor?" condicional implementado. Fase dados do cliente encerrada por Fábio.
-- 2026-08-20 · [Bob/ETHOS] · T-F1-001 concluída: formulário de pedido/orçamento para vendedor implementado no SKIP (v0.0.6). Tabela `pedidos` criada, login via PocketBase, estados rascunho/pendente/revisão/pronto_para_atendimento. Usuário fabio@florus.com.br criado. Teste aprovado pelo champion.
+- 2026-08-20 · [Bob/ETHOS] · T-F1-001 concluída: formulário de pedido/orçamento para vendedor implementado no SKIP (v0.0.6). Tabela `pedidos` criada, login via PocketBase, usuário fabio@florus.com.br criado. Teste aprovado pelo champion.
 - 2026-08-20 · [consultoria Adapta] · Pasta operacional criada; Fase 1 recebida e liberada para execução task a task.

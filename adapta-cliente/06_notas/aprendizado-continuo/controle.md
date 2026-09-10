@@ -5,6 +5,7 @@ Registro das triagens de aprendizado do projeto. Formato:
 
 ## Registro
 
+- 2026-09-10T10:23:00-03:00 · task T-F1-005 · capturado · AP-2026-09-10-1022-reconciliacao-simulada.md (falhas locais explícitas, eventos e idempotência por pedido_id antes da integração real)
 - 2026-09-09T14:35:00-03:00 · task T-F1-004 · capturado · AP-2026-09-09-1433-login-persistencia.md (autenticação aceita sem transição visual; navegação explícita e consulta posterior ao recurso)
 - 2026-08-28T08:35:00-03:00 · task T-F1-003 · capturado · AP-2026-08-28-0835-handoff-leitura-vendedor.md (handoff com visão de leitura sem redigitar dados)
 - 2026-08-27T17:51:00-03:00 · task T-F1-002 · capturado · AP-2026-08-27-1751-validacao-pendencia-revisao.md (validação separando pendência de revisão por formato)
