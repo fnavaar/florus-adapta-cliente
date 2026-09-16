@@ -1,13 +1,13 @@
 # Estado atual — Adapta Cliente
 
-- task_id: T-F1-005
+- task_id: T-F1-002
 - champion: Fábio
-- spec: 04_fase-atual/specs/spec-1-002-pipe-tags-dashboard.md
-- etapa: concluida
-- autorizacao_implementacao: confirmada + 2026-09-10T14:51:00-03:00 + "pode iniciar a próxima tarefa"
-- teste_humano: aprovado + 2026-09-10T10:22:00-03:00 + "Funcionou."
-- verificacao_automatica: passou + Skip v0.0.37 (setup, análise estática, build, integrações e testes)
-- aprendizado: capturado:06_notas/aprendizado-continuo/AP-2026-09-10-1022-reconciliacao-simulada.md
-- ultima_acao: T-F1-005 concluída e aprovada: timeout, API indisponível, duplicidade e reconciliação local validados pelo champion sem chamada real ao DataCrazy.
-- proxima_acao: analisar a próxima task elegível, sem iniciar implementação automaticamente
-- atualizado_em: 2026-09-10T10:23:00-03:00
+- spec: 04_fase-atual/specs/spec-1-001-entrada-pedido-orcamento.md
+- etapa: aguardando_autorizacao
+- autorizacao_implementacao: ausente
+- teste_humano: pendente
+- verificacao_automatica: pendente
+- aprendizado: pendente
+- ultima_acao: Análise da T-F1-002 concluída: caminho principal de formulário, validação, rascunho, retomada e bloqueio de duplicidade existentes; cenários de queda de canal, sessão expirada, retry/persistência de tentativa e evidência estruturada ainda precisam ser exercitados/fechados.
+- proxima_acao: aguardar autorização para implementar a T-F1-002
+- atualizado_em: 2026-09-16T11:43:00-03:00
