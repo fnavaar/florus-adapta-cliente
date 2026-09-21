@@ -1,13 +1,13 @@
 # Estado atual — Adapta Cliente
 
-- task_id: T-F1-002 (emenda do champion: alerta antecipado + versionamento)
+- task_id: T-F1-002 (emendas do champion: alerta antecipado + versionamento + nome do projeto + cotação)
 - champion: Fábio
 - spec: 04_fase-atual/specs/spec-1-001-entrada-pedido-orcamento.md
-- etapa: aguardando_autorizacao
-- autorizacao_implementacao: ausente (análise dos 2 novos pontos apresentada; aguardando decisão do champion)
-- teste_humano: aprovado parcial + 2026-09-21T15:23:00-03:00 + "Agora o envio do pedido funcionou" (v0.0.51); champion levantou 2 novos pontos: (1) "Novo Pedido" restaurou tentativa anterior do cliente Florus em vez de abrir em branco; (2) falta título/rastreio para identificar qual pedido foi editado
-- verificacao_automatica: passou + QA v0.0.51 (setup, static, build, integrations, test OK)
+- etapa: aguardando_teste_humano
+- autorizacao_implementacao: confirmada + 2026-09-21T18:35:00-03:00 + "Você precisa criar o campo 'Nome do Projeto'... antes do campo 'Detalhes e objetivos do projeto'... 'Projeto sem nome'... Cotação: sugerir pela categoria ou descrição; só pedir correção quando impossível identificar"
+- teste_humano: pendente (nome do projeto + cotação por categoria + aviso de tentativa pendente)
+- verificacao_automatica: passou + QA v0.0.52 (setup, static, build, integrations, test OK); coluna nome_projeto confirmada no banco (migration 0009)
 - aprendizado: capturado:06_notas/aprendizado-continuo/AP-2026-09-18-0855-recuperacao-integridade-edicao-incremental.md
-- ultima_acao: Debug 2 concluído e reteste aprovado pelo champion ("Agora o envio do pedido funcionou"); análise dos 2 novos pontos apresentada
-- proxima_acao: aguardar decisão do champion sobre (1) comportamento do botão Novo Pedido com tentativa recuperada e (2) título/rastreio de pedidos
-- atualizado_em: 2026-09-21T15:25:00-03:00
+- ultima_acao: Implementados (1) campo Nome do Projeto antes de "Detalhes e objetivos", fallback "Projeto sem nome", exibido na lista, card da Pipe (título principal), detalhe, alerta antecipado, linhagem e busca; (2) Cotação sugere por categoria mesmo sem linha definida (alerta informativo, sem bloqueio); bloqueio só quando a categoria não é identificável; (3) Novo Pedido com tentativa pendente mostra aviso com "Continuar essa tentativa" / "Descartar e começar em branco".
+- proxima_acao: aguardar teste humano do champion (roteiro enviado)
+- atualizado_em: 2026-09-21T19:05:00-03:00
