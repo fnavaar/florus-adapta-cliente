@@ -7,27 +7,28 @@
 
 ## Registro
 
-- 2026-09-21 · [champion] · Emenda autorizada ("Você precisa criar o campo 'Nome do Projeto'... antes do campo 'Detalhes e objetivos do projeto'... 'Projeto sem nome'... Cotação: sugerir pela categoria ou descrição; só pedir correção quando impossível identificar"): (1) **Nome do Projeto** — campo novo no formulário (antes de "Detalhes e objetivos do projeto"), coluna `nome_projeto` (migration 0009), exibido na lista, no card da Pipe (título principal, cliente abaixo), no detalhe, no alerta antecipado, na linhagem e na busca; fallback "Projeto sem nome"; (2) **Cotação** — trava da lógica levantada pelo champion para esta correção: sugestões aparecem pela categoria mesmo sem linha (uso) definida, com alerta informativo (sem bloqueio); pedir correção ao vendedor SOMENTE quando a categoria não é identificável pela descrição; (3) **Novo Pedido** — tentativa pendente agora pergunta: "Continuar essa tentativa" ou "Descartar e começar em branco" (antes restaurava em silêncio). QA v0.0.52 aprovado; coluna confirmada no banco. Teste humano pendente.
-- 2026-09-21 · [champion] · Reteste do Debug 2 aprovado ("Agora o envio do pedido funcionou"). Dois novos pontos levantados: (1) "Novo Pedido" restaurava tentativa anterior em vez de abrir em branco; (2) falta título/rastreio para identificar qual pedido foi editado.
-- 2026-09-21 · [champion] · DEBUG task T-F1-002 (emenda) — 2º ciclo: ao carregar um pedido anterior e enviar sem alterar produtos, o sistema mostrava o alerta "Este cliente já tem o pedido X. É um novo pedido deste cliente?". Causa raiz: a linhagem (pedido_origem/versao) só era calculada na gravação, DEPOIS do alerta. → corrigido: linhagem definida no momento em que o pedido é carregado para edição e alerta de duplicidade pulado para versão de pedido existente (v0.0.51, QA OK).
-- 2026-09-21 · [champion] · DEBUG task T-F1-002 (emenda): ao carregar pedidos anteriores para edição, "Detalhes e objetivos do projeto" e "Data para o projeto estar pronto" vinham vazios → causa raiz: os campos sobre_projeto, data_pronto e origem_contato existiam no formulário (v0.0.26/v0.0.33) mas nunca foram criados como colunas da coleção `pedidos`. → corrigido: migration 0008_add_campos_projeto criou as 3 colunas (v0.0.50, QA OK). Conteúdo digitado antes da correção não foi persistido e precisa ser redigitado nos pedidos antigos.
-- 2026-09-20 · [Bob/ETHOS] · Implementação autorizada pelo champion: (1) **alerta antecipado** — ao digitar CNPJ completo ou Razão Social (3+ caracteres) na fase Dados do Cliente, o sistema mostra na hora os pedidos existentes do cliente com botão "Carregar para editar"; (2) **versionamento** — enviar um pedido carregado para edição cria um NOVO registro com novo número; o anterior fica marcado "Substituído pelo pedido X"; (3) **linhagem** — formulário, lista e detalhe mostram "Versão N do pedido X" e quantas vezes o original foi alterado; (4) retry de falha de gravação mantém o mesmo número. Migration 0007_add_versionamento. QA v0.0.49 aprovado.
-- 2026-09-19 · [champion] · Teste humano do ajuste de duplicidade aprovado ("Funcionou"). T-F1-002 concluída. Nova solicitação: alerta de cliente existente ANTES do cadastro, com opção de carregar pedido em aberto para edição.
-- 2026-09-19 · [champion] · Regra de duplicidade alterada: o mesmo cliente pode ter vários pedidos. Bloqueio substituído por alerta com confirmação. Proteção do `pedido_id` único mantida. QA v0.0.48 aprovado.
-- 2026-09-18 · [champion] · Task T-F1-002 concluída: pendência explícita, recuperação de tentativa por sessão, retry controlado com reuso do `pedido_id`, proteção contra regressão do número e duplicidade. QA v0.0.46 aprovado. Divergência documental de 2026-08-27 resolvida.
-- 2026-09-18 · [Bob/ETHOS] · Recuperação de integridade: edição incremental corrompeu FormularioPedido.tsx; formulário restaurado (v0.0.45) e T-F1-002 reaplicada em escrita única (v0.0.46).
-- 2026-09-10 · [champion] · Task T-F1-005 concluída: cenários locais de timeout, API indisponível, duplicidade e reconciliação aprovados. QA v0.0.37 aprovado.
-- 2026-09-09 · [champion] · Task T-F1-004 concluída: pipe local e dashboard operacional validados. QA v0.0.35 aprovado. Sincronização real com DataCrazy permanece pendente.
-- 2026-09-09 · [Bob/ETHOS] · DEBUG task T-F1-004: login retornava 200 mas o frontend não trocava de tela → corrigido no Login.tsx com redirecionamento após autenticação.
-- 2026-09-02 · [champion] · Nova ordem: incluir seção **"Sobre o projeto"** antes de "Avaliação do Pedido". Especificação em 06_notas/sobre-o-projeto-especificacao-v1.md.
-- 2026-09-01 · [Bob/ETHOS] · Cotação implementada no SKIP (v0.0.30→0.0.32): tabela de custos jan-2025 (100 produtos), custo unitário = (valor do kg ÷ 1000) × tamanho + mão de obra (G ≤300 mL / H >300 mL). Sugestões ordenadas por proximidade do objetivo de custo.
-- 2026-09-01 · [champion] · Regras de cálculo do custo unitário explicadas. Planilha Tabela de Preços jan-2025 enviada.
-- 2026-09-01 · [champion] · Nova ordem: criar a seção **Cotação** no sistema.
-- 2026-08-28 · [champion] · Task T-F1-003 concluída: handoff ao vendedor aprovado. v0.0.29. SPEC-1-001 completa (3/3).
-- 2026-08-27 · [champion] · Task T-F1-002 concluída (v0.0.28). *(Registro revisado em 2026-09-18: a conclusão oficial é a de 2026-09-18, v0.0.46.)*
-- 2026-08-27 · [Bob/ETHOS] · Repositório atualizado: STATUS.md, fase.md, 05_entregas/T-F1-001, changelog e estado persistente.
-- 2026-08-26 · [Bob/ETHOS] · Sistema travado pelo champion até "Necessidade de investimento para esse projeto" (v0.0.26). Dados Complementares: "Data para o projeto estar pronto" e "Como você chegou até a Florus?".
-- 2026-08-26 · [Bob/ETHOS] · T-F1-001 encerrada e aprovada pelo champion: formulário de pedido completo no SKIP.
-- 2026-08-25 · [Bob/ETHOS] · Fase de avaliação do pedido iniciada: tabela dinâmica de produtos (v0.0.13).
-- 2026-08-20 · [Bob/ETHOS] · T-F1-001 concluída: formulário de pedido/orçamento (v0.0.6). Tabela `pedidos` criada, login via PocketBase.
-- 2026-08-20 · [consultoria Adapta] · Pasta operacional criada; Fase 1 recebida e liberada para execução task a task.
+- 2026-09-21 · [champion] · Correção de 2 erros (autorizada: "É fundamental indicar o produto correto"): (1) **alerta antecipado** — agora mostra o Nome do Projeto de cada pedido (fallback "Projeto sem nome") e a contagem de edições ("editado N vezes"); lista APENAS pedidos vigentes (substituido_por vazio) — versões antigas continuam no histórico da lista, mas não aparecem mais como pedidos abertos para carregar; (2) **Cotação** — a ordenação priorizava a proximidade do objetivo de custo e a afinidade com a descrição só decidia empates, então um sérum de Vitamina C mais barato vencia o de Niacinamida; corrigido: PRIMEIRO afinidade com o que o vendedor descreveu, DEPOIS proximidade do objetivo de custo dentro do mesmo nível de afinidade. Algoritmo validado localmente contra a tabela real antes de aplicar. QA v0.0.53 aprovado. Teste humano pendente.
+- 2026-09-21 · [champion] · Emenda autorizada (campo Nome do Projeto antes de "Detalhes e objetivos do projeto", fallback "Projeto sem nome"; Cotação sugerir por categoria/descrição, bloqueio só quando impossível identificar; Novo Pedido pergunta continuar/descartar tentativa). QA v0.0.52 aprovado.
+- 2026-09-21 · [champion] · Reteste do Debug 2 aprovado ("Agora o envio do pedido funcionou"). Pontos: "Novo Pedido" restaurava tentativa em silêncio; falta título/rastreio do pedido.
+- 2026-09-21 · [champion] · DEBUG — 2º ciclo: alerta de duplicidade disparava ao enviar pedido carregado para edição; causa raiz: linhagem calculada tarde; corrigido com linhagem definida na carga (v0.0.51).
+- 2026-09-21 · [champion] · DEBUG: campos sobre_projeto/data_pronto/origem_contato nunca foram colunas da coleção; migration 0008 criou (v0.0.50). Conteúdo antigo desses campos perdido.
+- 2026-09-20 · [Bob/ETHOS] · Implementação autorizada: alerta antecipado + versionamento + linhagem (migration 0007). QA v0.0.49 aprovado.
+- 2026-09-19 · [champion] · Teste do ajuste de duplicidade aprovado ("Funcionou"). T-F1-002 concluída. Nova solicitação: alerta antecipado + carregar pedido para edição.
+- 2026-09-19 · [champion] · Regra de duplicidade: bloqueio → alerta com confirmação; vários pedidos do mesmo cliente permitidos (v0.0.48).
+- 2026-09-18 · [champion] · Task T-F1-002 concluída (v0.0.46). Divergência documental de 2026-08-27 resolvida.
+- 2026-09-18 · [Bob/ETHOS] · Recuperação de integridade: formulário restaurado (v0.0.45) e T-F1-002 reaplicada em escrita única (v0.0.46).
+- 2026-09-10 · [champion] · Task T-F1-005 concluída (v0.0.37).
+- 2026-09-09 · [champion] · Task T-F1-004 concluída (v0.0.35). DataCrazy real fica para o fim.
+- 2026-09-09 · [Bob/ETHOS] · DEBUG T-F1-004: login não trocava de tela; corrigido no Login.tsx.
+- 2026-09-02 · [champion] · Nova ordem: seção "Sobre o projeto" antes de "Avaliação do Pedido".
+- 2026-09-01 · [Bob/ETHOS] · Cotação implementada (v0.0.30→0.0.32): tabela jan-2025, 100 produtos.
+- 2026-09-01 · [champion] · Regras de cálculo do custo unitário; planilha jan-2025 enviada.
+- 2026-09-01 · [champion] · Nova ordem: criar a seção Cotação.
+- 2026-08-28 · [champion] · Task T-F1-003 concluída (v0.0.29). SPEC-1-001 completa (3/3).
+- 2026-08-27 · [champion] · Task T-F1-002 concluída (v0.0.28). *(Conclusão oficial: 2026-09-18, v0.0.46.)*
+- 2026-08-27 · [Bob/ETHOS] · Repositório atualizado (STATUS.md, fase.md, 05_entregas/T-F1-001).
+- 2026-08-26 · [Bob/ETHOS] · Sistema travado até "Necessidade de investimento" (v0.0.26). Dados Complementares completos.
+- 2026-08-26 · [Bob/ETHOS] · T-F1-001 encerrada e aprovada: formulário completo no SKIP.
+- 2026-08-25 · [Bob/ETHOS] · Tabela dinâmica de produtos (v0.0.13).
+- 2026-08-20 · [Bob/ETHOS] · T-F1-001 concluída (v0.0.6): tabela `pedidos`, login PocketBase.
+- 2026-08-20 · [consultoria Adapta] · Pasta operacional criada; Fase 1 liberada.

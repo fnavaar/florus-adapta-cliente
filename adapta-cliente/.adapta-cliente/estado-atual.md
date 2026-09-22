@@ -4,10 +4,10 @@
 - champion: Fábio
 - spec: 04_fase-atual/specs/spec-1-001-entrada-pedido-orcamento.md
 - etapa: aguardando_teste_humano
-- autorizacao_implementacao: confirmada + 2026-09-21T18:35:00-03:00 + "Você precisa criar o campo 'Nome do Projeto'... antes do campo 'Detalhes e objetivos do projeto'... 'Projeto sem nome'... Cotação: sugerir pela categoria ou descrição; só pedir correção quando impossível identificar"
-- teste_humano: pendente (nome do projeto + cotação por categoria + aviso de tentativa pendente)
-- verificacao_automatica: passou + QA v0.0.52 (setup, static, build, integrations, test OK); coluna nome_projeto confirmada no banco (migration 0009)
+- autorizacao_implementacao: confirmada + 2026-09-21T21:24:00-03:00 + "Encontrei 2 erros... não apareceu o nome do projeto na hora de recuperar um pedido em andamento... o pedido anterior continua aparecendo como pedido aberto... não indicou o Sérum de Niacinamida. É fundamental indicar o produto correto."
+- teste_humano: pendente (correções v0.0.53: alerta com nome do projeto + só vigentes; cotação por afinidade de descrição)
+- verificacao_automatica: passou + QA v0.0.53 (setup, static, build, integrations, test OK)
 - aprendizado: capturado:06_notas/aprendizado-continuo/AP-2026-09-18-0855-recuperacao-integridade-edicao-incremental.md
-- ultima_acao: Implementados (1) campo Nome do Projeto antes de "Detalhes e objetivos", fallback "Projeto sem nome", exibido na lista, card da Pipe (título principal), detalhe, alerta antecipado, linhagem e busca; (2) Cotação sugere por categoria mesmo sem linha definida (alerta informativo, sem bloqueio); bloqueio só quando a categoria não é identificável; (3) Novo Pedido com tentativa pendente mostra aviso com "Continuar essa tentativa" / "Descartar e começar em branco".
+- ultima_acao: Corrigidos os 2 erros: (1) alerta antecipado agora mostra o Nome do Projeto em cada pedido (fallback "Projeto sem nome"), a contagem de edições ("editado N vezes") e lista APENAS pedidos vigentes (substituido_por vazio — versões antigas não aparecem mais como abertos); (2) Cotação ordena PRIMEIRO pela afinidade com a descrição digitada ("niacinamida" sobe os séruns com niacinamida) e DEPOIS pela proximidade do objetivo de custo dentro do mesmo nível de afinidade — validado localmente contra a tabela real (3 séruns de niacinamida no topo).
 - proxima_acao: aguardar teste humano do champion (roteiro enviado)
-- atualizado_em: 2026-09-21T19:05:00-03:00
+- atualizado_em: 2026-09-21T21:55:00-03:00
