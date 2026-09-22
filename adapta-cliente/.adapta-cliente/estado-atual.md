@@ -1,13 +1,13 @@
 # Estado atual — Adapta Cliente
 
-- task_id: T-F1-002 (emendas do champion: alerta antecipado + versionamento + nome do projeto + cotação)
+- task_id: T-F1-007 (matriz mínima de acesso e auditoria — SPEC-1-003)
 - champion: Fábio
-- spec: 04_fase-atual/specs/spec-1-001-entrada-pedido-orcamento.md
+- spec: 04_fase-atual/specs/spec-1-003-rls-auditoria-recuperacao.md
 - etapa: aguardando_teste_humano
-- autorizacao_implementacao: confirmada + 2026-09-21T21:24:00-03:00 + "Encontrei 2 erros... não apareceu o nome do projeto na hora de recuperar um pedido em andamento... o pedido anterior continua aparecendo como pedido aberto... não indicou o Sérum de Niacinamida. É fundamental indicar o produto correto."
-- teste_humano: pendente (correções v0.0.53: alerta com nome do projeto + só vigentes; cotação por afinidade de descrição)
-- verificacao_automatica: passou + QA v0.0.53 (setup, static, build, integrations, test OK)
-- aprendizado: capturado:06_notas/aprendizado-continuo/AP-2026-09-18-0855-recuperacao-integridade-edicao-incremental.md
-- ultima_acao: Corrigidos os 2 erros: (1) alerta antecipado agora mostra o Nome do Projeto em cada pedido (fallback "Projeto sem nome"), a contagem de edições ("editado N vezes") e lista APENAS pedidos vigentes (substituido_por vazio — versões antigas não aparecem mais como abertos); (2) Cotação ordena PRIMEIRO pela afinidade com a descrição digitada ("niacinamida" sobe os séruns com niacinamida) e DEPOIS pela proximidade do objetivo de custo dentro do mesmo nível de afinidade — validado localmente contra a tabela real (3 séruns de niacinamida no topo).
+- autorizacao_implementacao: confirmada + 2026-09-21T22:30:00-03:00 + "Sim" (após confirmação das 5 pré-condições e plano refinado)
+- teste_humano: pendente (papéis, RLS, auditoria, governança)
+- verificacao_automatica: passou + QA v0.0.56 (setup, static, build, integrations, test OK); migration 0010_rls_auditoria aplicada; RLS confirmado no banco (listRule/createRule/deleteRule); coleção auditoria criada; usuários de teste semeados
+- aprendizado: capturado:06_notas/aprendizado-continuo/AP-2026-09-21-2140-campos-exigem-coluna-e-decisao-na-entrada.md
+- ultima_acao: Implementados: campo role em users (lead/vendedor/gestor/admin); RLS em pedidos (vendedor só o dele; gestor/admin tudo; acesso_extra para compartilhamento); deleteRule nula (retenção para sempre); hook auditoria_pedidos.js (criar/editar com antes-depois dos campos sensíveis; vendedor não troca responsável nem compartilhamento; exclusão negada); coleção auditoria (leitura gestor/admin, escrita só por hooks); tela Usuários e Acessos (criar usuário, alterar papel, últimos 50 eventos); governança no DetalhePedido (troca de responsável e compartilhamento pelo gestor); ListaPedidos respeita papel (gestor/admin veem tudo); Fábio promovido a admin. Usuários de teste: vendedor@/gestor@/admin@teste.florus.com.br (senha 12345678).
 - proxima_acao: aguardar teste humano do champion (roteiro enviado)
-- atualizado_em: 2026-09-21T21:55:00-03:00
+- atualizado_em: 2026-09-22T01:30:00-03:00
