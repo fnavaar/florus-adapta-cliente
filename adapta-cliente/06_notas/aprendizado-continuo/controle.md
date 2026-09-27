@@ -12,3 +12,4 @@ Registro das triagens de aprendizado do projeto. Formato:
 - 2026-09-23T20:15:00-03:00 · task T-F1-007 (debug) · capturado · AP-2026-09-23-2015-colecao-nova-jsvm-regras.md (bloco declarativo `new Collection` não persiste campos/regras no JSVM; validar schema live antes de aprovar QA)
 - 2026-09-25T09:40:00-03:00 · task T-F1-008 · capturado · AP-2026-09-25-0940-expiracao-sessao-rotacao-segredo.md (expiração determinística de sessão via rotação de authToken.secret; limites do 400 vs 401 documentados)
 - 2026-09-25T09:41:00-03:00 · task T-F1-008 · capturado · AP-2026-09-25-0941-jsvm-registro-rota.md (middleware $apis.guest() impede registro de rota no JSVM — 404 silencioso; e.request.header é campo, usar .get())
+- 2026-09-27T18:30:00-03:00 · task T-F1-006 · capturado · AP-2026-09-27-1830-reexecutar-provas-apos-corrigir-hook.md (bloqueio por papel deve cobrir exatamente a lista de campos sensíveis; reexecutar todas as provas após corrigir hook)
