@@ -1,6 +1,6 @@
 # STATUS — Projeto Florus Brasil — Processo Comercial
 
-> **Atualizado em:** 2026-09-27 · **Por:** Bob/ETHOS (execução) + consultoria Adapta
+> **Atualizado em:** 2026-09-28 · **Por:** Bob/ETHOS (execução) + consultoria Adapta
 
 **Repo do cliente:** https://github.com/fnavaar/florus-adapta-cliente
 
@@ -8,12 +8,9 @@
 
 - **Fase atual:** 1 — entrada estruturada, pedido/orçamento, qualificação e priorização · aberta em 2026-08-20 · reunião de fechamento a definir
 - **Objetivo desta fase:** organizar a entrada comercial, encaminhar pedidos ao CRM/DataCrazy, dar visibilidade à pipe e estabelecer um baseline rastreável.
-- **No prazo?** em acompanhamento — SPEC-1-001 completa (3/3), SPEC-1-002 completa (T-F1-004/005/006), T-F1-007, T-F1-008 e T-F1-010 concluídas; próximas tasks nas ondas 2 e 3.
-
-## Progresso da fase
-
-- **Tasks:** 9/12 (75%) — T-F1-001, T-F1-002, T-F1-003, T-F1-004, T-F1-005, T-F1-006, T-F1-007, T-F1-008 e T-F1-010 concluídas (T-F1-010 concluída em 2026-09-27).
-- **Próximas tasks elegíveis:** T-F1-011 (cobertura, duplicidade, timestamps, timezone e não interpolação do baseline — SPEC-1-004) e T-F1-009 (rollback RLS/auditoria — Onda 3). T-F1-012 depende de T-F1-011.
+- **No prazo?** em acompanhamento — SPEC-1-001 completa (3/3), SPEC-1-002 completa (T-F1-004/005/006), T-F1-007, T-F1-008, T-F1-010 e T-F1-011 concluídas; restam T-F1-009 e T-F1-012 (Onda 3).
+- **Tasks:** 10/12 (83%) — T-F1-001, T-F1-002, T-F1-003, T-F1-004, T-F1-005, T-F1-006, T-F1-007, T-F1-008, T-F1-010 e T-F1-011 concluídas (T-F1-011 concluída em 2026-09-28).
+- **Próximas tasks elegíveis:** T-F1-009 (rollback RLS/auditoria) e T-F1-012 (relatório de baseline final, handoff sem exposição indevida) — ambas da Onda 3, com predecessoras concluídas.
 
 ## Travas ativas
 
@@ -37,6 +34,7 @@
 | 1 | **T-F1-008** — negativas, falha de escrita, duplicidade e preservação de versão no SKIP (v0.0.63–v0.0.69): negativas com motivo do servidor, guarda de versão substituída (sem botão de edição no histórico), número só gerado após carga OK, tentativa preservada em localStorage com linhagem (`versao_de`), banner de tentativa pendente, reconciliação visível; Pipe oculta versões substituídas (v0.0.65). Provas: RLS 404 em pedido alheio, negativa de troca de vendedor auditada, linhagens sem duas versões vigentes, recuperação pós-sessão expirada com dados e alterações (expiração manual via rotação de segredo, v0.0.70–0.0.73), Simular falha + Reconciliar aprovados. Aprovado pelo champion (Testes 1, 2 e 3 em 2026-09-25). | 2026-09-25 |
 | 1 | **T-F1-006** — distribuição, redistribuição e auditoria da pipe no SKIP (v0.0.74–v0.0.75): seletor de responsável com usuários reais (grava responsavel_id + nome), motivo obrigatório (mín. 10 caracteres) na redistribuição e no escalonamento para Alta/Urgente com diálogo antes→depois, hook de auditoria registra responsavel_id/responsavel_nome e bloqueia vendedor ("Somente o gestor pode trocar o responsável"), badge de idade (há N dias) e próxima ação no cartão. Provas: gestor sem motivo → 400; com motivo → 200 + evento auditado; vendedor → 400 + "negado"; urgente sem motivo → 400; smoke test UI. Aprovado pelo champion ("Funcionou", 2026-09-27). | 2026-09-27 |
 | 1 | **T-F1-010** — dicionário de eventos v1 e Relatório de Baseline no SKIP (v0.0.76): tela para gestor/admin com seletor de período (mês corrente, mês específico, últimos 30 dias, últimos 12 meses, ano corrente, ano passado, personalizado), cada número com fórmula, fonte, período, cobertura e confiança (CA-1-020); métricas calculáveis hoje (volume, idade média, tempo até pronto para atendimento, redistribuições, escalonamentos, negativas por papel, cobertura do evento criar); par de sucesso (tempo até proposta + acurácia), meta/tolerância, primeiro atendimento, retrabalho, conversão e SLA exibidos como BLOQUEADOS com motivo (CA-1-022, RN-1.018/1.019); duplicatas legadas declaradas e contadas uma única vez (RN-1.017); dicionário versionado em 04_fase-atual/dicionario-eventos-v1.md (7 eventos instrumentados, 6 grupos bloqueados). Provas: métricas validadas em Python contra os dados reais; UI conferida no preview (gestor vê, vendedor sem botão e com 0 eventos de auditoria vs 34 do gestor). Aprovado pelo champion (2026-09-27). | 2026-09-27 |
+| 1 | **T-F1-011** — validações de qualidade dos dados do baseline no SKIP (v0.0.77–v0.0.78): `parseSeguro` (rejeita datas impossíveis; timestamp sem fuso interpretado como Brasília, nunca o fuso do navegador), `validarEventos` (duplicado por `event_id` conta 1×; inválido excluído e contado), `temDadoPessoal` (e-mail/telefone/CPF sinalizado, nunca exibido — CA-1-023) e exclusão de eventos contraditórios (tempo negativo jamais publicado — CA-1-021). Nova seção "Qualidade dos dados (CA-1-021)" no Relatório de Baseline: mensagem verde quando limpo; lista com contagem e tratamento quando há problemas. TDD: RED provou que a v0.0.76 publicaria tempo negativo (-22h) com dados adulterados e perderia duplicado/sem fuso em silêncio; GREEN corrigiu tudo; regressão com dados limpos = números idênticos (volume 7, idade 9,1 dias, cobertura 2/7). Debug v0.0.78: chave `contraditorios` não inicializada em validarEventos (NaN → tabela vazia em vez da mensagem verde). Aprovado pelo champion (2026-09-28, com a variação da idade média 9,1→9,4 explicada: métrica medida na hora do relatório). | 2026-09-28 |
 
 ## Próxima reunião
 

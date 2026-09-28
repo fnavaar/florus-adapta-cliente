@@ -1,27 +1,28 @@
 # Estado atual — Adapta Cliente
 
-- task_id: T-F1-010 (fechar o contrato do dicionário de eventos e a estrutura do relatório de baseline — SPEC-1-004, Onda 1)
+- task_id: T-F1-011 (validar cobertura, duplicidade, timestamps, timezone e não interpolação do baseline — SPEC-1-004, Onda 2)
 - champion: Fábio
 - spec: 04_fase-atual/specs/spec-1-004-baseline-metricas.md
 - etapa: concluida
-- autorizacao_implementacao: confirmada (2026-09-27 21:49, "Pode implementar a T-F1-010")
-- teste_humano: aprovado (2026-09-27 22:04, "Fiz isso e apareceu exatamente o que você descreveu")
-- verificacao_automatica: passou (v0.0.76 — QA Skip completo OK; validação local em Python das métricas contra os dados reais; prova no preview com gestor: volume 7, idade 9,1 dias, redistribuições 5, negativas gestor 5/vendedor 4, cobertura 2/7, tempo→pronto não calculável 0/4; seletor de período testado em 3 presets; vendedor sem botão e com 0 eventos de auditoria visíveis vs 34 do gestor)
-- aprendizado: capturado:06_notas/aprendizado-continuo/AP-2026-09-27-2205-rls-pocketbase-filtro-nao-403.md
-- ultima_acao: T-F1-010 concluída (v0.0.76): fase.md, STATUS.md (9/12, 75%) e changelog.md atualizados; dicionário versionado em 04_fase-atual/dicionario-eventos-v1.md
-- proxima_acao: nenhuma automática — próxima task (T-F1-011 ou T-F1-009) exige novo pedido do champion
-- atualizado_em: 2026-09-27T22:06:00-03:00
+- autorizacao_implementacao: confirmada (2026-09-27 22:29, "Pode implementar a T-F1-011")
+- teste_humano: aprovado (2026-09-28 07:03, "Testei e funcionou — pode concluir a T-F1-011"; variação da idade média 9,1→9,4 explicada: métrica medida na hora do relatório)
+- verificacao_automatica: passou (v0.0.78 — TDD: RED provou que a v0.0.76 publicava tempo NEGATIVO (-22h) com evento contraditório e perdia evento duplicado/sem fuso; GREEN em Python com 5 adulterações PASSOU e regressão com dados limpos idêntica; debug v0.0.78 corrigiu NaN em contraditorios; regressão no preview confirmada: volume 7, idade 9,1 dias, cobertura 2/7, tempo não calculável, mensagem verde "Nenhuma inconsistência nos 34 eventos", ano passado zera sem erro)
+- aprendizado: capturado:06_notas/aprendizado-continuo/AP-2026-09-28-0710-fixture-prova-cenario-perigoso.md
+- ultima_acao: T-F1-011 concluída (v0.0.78): fase.md, STATUS.md (10/12, 83%) e changelog.md atualizados; prova revalidada do zero em scripts/tf1011-tdd.py
+- proxima_acao: nenhuma automática — próxima task (T-F1-009 ou T-F1-012) exige novo pedido do champion
+- atualizado_em: 2026-09-28T07:12:00-03:00
 
 ---
-## Análise T-F1-010 (resumo para retomada)
-- Critérios: CA-1-018 (dicionário com fonte/evento/campos/timestamp/ator/estado/uso), CA-1-020 (todo número com fórmula, fonte, período, unidade, cobertura, confiança), CA-1-022 (par tempo de proposta + acurácia e métricas de proteção como aprovados ou bloqueados, nunca meta inventada).
-- O que JÁ existe no sistema (fonte de eventos real, coleção auditoria): criar pedido (4), editar campos sensíveis com antes→depois (21: estado, vendedor_id, acesso_extra, responsavel_id/nome, razao_social, cnpj, produtos), negativas (9). 17 pedidos com created/updated/estado/prioridade/responsável. Eventos da pipe e da entrada (rascunho salvo, enviado, versão criada) NÃO estão na auditoria — só campos sensíveis.
-- Lacunas: (1) eventos de início/fim do par de sucesso NÃO existem ainda — "dados_minimos_completos" (quando o pedido fica completo) e "proposta_enviada" (não há proposta no sistema na Fase 1); (2) acurácia sem fórmula aprovada (RN-1.018: não publicar valor); (3) período/meta/tolerância não definidos (decisão do champion); (4) timezone OK (UTC no banco, exibição pt-BR).
-- Recorte proposto (menor completo para CA-1-018/020/022): (a) documento "Dicionário de eventos v1" versionado no repo (06_notas ou 04_fase-atual), listando cada evento real com fonte/campos/timestamp/ator/estado/uso + eventos planejados marcados como "não instrumentado"; (b) tela Relatório de Baseline no app (só gestor/admin): tabela de métricas de proteção calculáveis HOJE (volume de pedidos por estado, idade média, redistribuições, negativas por papel, tempo de criação→pronto_para_atendimento quando eventos permitirem) cada uma com fórmula+fonte+período+cobertura+confiança; par de sucesso e acurácia aparecem como BLOQUEADOS com a pendência de definição (CA-1-022); (c) exportação/impressão do relatório versionado.
-- Decisão do champion (2026-09-27, ~21:48): período NÃO é decisão única — o relatório terá SELETOR de período (mês corrente, mês específico, últimos 30 dias, últimos 12 meses, ano corrente, ano passado, período personalizado). Meta e tolerância ficam em branco agora; serão definidas na hora do relatório (SPEC proíbe meta inventada; quando definidas, viram linha de comparação).
-- Falta apenas: autorização explícita para implementar (aguardando mensagem nova do champion).
-- Arquivos: novo src/components/RelatorioBaseline.tsx + rota no Layout/App; dicionário em 04_fase-atual/ (repo); sem mudança de schema (lê auditoria + pedidos existentes).
-- Interpretação a validar: "fechar o contrato" = publicar o dicionário com o que existe + o que falta; relatório nasce PARCIAL/BLOQUEADO por design (RN-1.018/1.020) — isso é conformidade, não falha.
+## Análise T-F1-011 (resumo para retomada)
+- Critérios: CA-1-019 (estimativa de ata/vídeo nunca vira baseline) e CA-1-021 (evento ausente/duplicado/contraditório fica não calculável, sem interpolação).
+- Implementado: camada de validação em src/lib/baseline.ts (parseSeguro, validarEventos, temDadoPessoal) + seção "Qualidade dos dados (CA-1-021)" no RelatorioBaseline.tsx (mensagem verde quando limpo; tabela com contagem e tratamento quando há problemas).
+- TDD em scripts/tf1011-tdd.py (durável; NÃO usar tmp/ — efêmero): RED provou -22h publicado pela v0.0.76; GREEN com 5 adulterações PASSOU; regressão com dados limpos idêntica.
+- Debug v0.0.78: chave `contraditorios` não inicializada em validarEventos → NaN → NaN===0 falso → tabela vazia em vez da mensagem verde.
+- Questionamento do champion sobre idade média 9,1→9,4 dias: comportamento correto — a fórmula é (agora − created), medida na hora da geração do relatório.
+
+---
+## Histórico — T-F1-010 (concluída em 2026-09-27)
+- implementada em v0.0.76; teste_humano aprovado ("apareceu exatamente o que você descreveu" 22:04); aprendizado capturado:AP-2026-09-27-2205 (RLS PocketBase age como filtro, HTTP 200 com lista vazia é bloqueio correto).
 
 ---
 ## Histórico — T-F1-006 (concluída em 2026-09-27)
