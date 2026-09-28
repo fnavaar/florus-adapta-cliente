@@ -8,12 +8,12 @@
 
 - **Fase atual:** 1 — entrada estruturada, pedido/orçamento, qualificação e priorização · aberta em 2026-08-20 · reunião de fechamento a definir
 - **Objetivo desta fase:** organizar a entrada comercial, encaminhar pedidos ao CRM/DataCrazy, dar visibilidade à pipe e estabelecer um baseline rastreável.
-- **No prazo?** em acompanhamento — SPEC-1-001 completa (3/3), SPEC-1-002 completa (T-F1-004/005/006), T-F1-007 e T-F1-008 concluídas; próximas tasks nas ondas 2 e 3.
+- **No prazo?** em acompanhamento — SPEC-1-001 completa (3/3), SPEC-1-002 completa (T-F1-004/005/006), T-F1-007, T-F1-008 e T-F1-010 concluídas; próximas tasks nas ondas 2 e 3.
 
 ## Progresso da fase
 
-- **Tasks:** 8/12 (67%) — T-F1-001, T-F1-002, T-F1-003, T-F1-004, T-F1-005, T-F1-006, T-F1-007 e T-F1-008 concluídas (T-F1-006 concluída em 2026-09-27).
-- **Próximas tasks elegíveis:** T-F1-010 (dicionário de eventos e baseline — SPEC-1-004). T-F1-009 (rollback — Onda 3) e T-F1-011/T-F1-012 dependem de predecessoras.
+- **Tasks:** 9/12 (75%) — T-F1-001, T-F1-002, T-F1-003, T-F1-004, T-F1-005, T-F1-006, T-F1-007, T-F1-008 e T-F1-010 concluídas (T-F1-010 concluída em 2026-09-27).
+- **Próximas tasks elegíveis:** T-F1-011 (cobertura, duplicidade, timestamps, timezone e não interpolação do baseline — SPEC-1-004) e T-F1-009 (rollback RLS/auditoria — Onda 3). T-F1-012 depende de T-F1-011.
 
 ## Travas ativas
 
@@ -36,6 +36,7 @@
 | 1 | **T-F1-007** — matriz mínima de acesso e auditoria no SKIP (v0.0.58–v0.0.60): papéis lead/vendedor/gestor/admin, RLS em pedidos (vendedor só os seus; gestor/admin tudo; compartilhamento auditado; exclusão bloqueada — retenção para sempre), auditoria server-side (ator, papel, antes→depois, motivo, versão, resultado) e tela Usuários e Acessos. Correção pós-teste: regras de leitura da auditoria (v0.0.60). Aprovado pelo champion (teste 23/09 + reteste 24/09). | 2026-09-24 |
 | 1 | **T-F1-008** — negativas, falha de escrita, duplicidade e preservação de versão no SKIP (v0.0.63–v0.0.69): negativas com motivo do servidor, guarda de versão substituída (sem botão de edição no histórico), número só gerado após carga OK, tentativa preservada em localStorage com linhagem (`versao_de`), banner de tentativa pendente, reconciliação visível; Pipe oculta versões substituídas (v0.0.65). Provas: RLS 404 em pedido alheio, negativa de troca de vendedor auditada, linhagens sem duas versões vigentes, recuperação pós-sessão expirada com dados e alterações (expiração manual via rotação de segredo, v0.0.70–0.0.73), Simular falha + Reconciliar aprovados. Aprovado pelo champion (Testes 1, 2 e 3 em 2026-09-25). | 2026-09-25 |
 | 1 | **T-F1-006** — distribuição, redistribuição e auditoria da pipe no SKIP (v0.0.74–v0.0.75): seletor de responsável com usuários reais (grava responsavel_id + nome), motivo obrigatório (mín. 10 caracteres) na redistribuição e no escalonamento para Alta/Urgente com diálogo antes→depois, hook de auditoria registra responsavel_id/responsavel_nome e bloqueia vendedor ("Somente o gestor pode trocar o responsável"), badge de idade (há N dias) e próxima ação no cartão. Provas: gestor sem motivo → 400; com motivo → 200 + evento auditado; vendedor → 400 + "negado"; urgente sem motivo → 400; smoke test UI. Aprovado pelo champion ("Funcionou", 2026-09-27). | 2026-09-27 |
+| 1 | **T-F1-010** — dicionário de eventos v1 e Relatório de Baseline no SKIP (v0.0.76): tela para gestor/admin com seletor de período (mês corrente, mês específico, últimos 30 dias, últimos 12 meses, ano corrente, ano passado, personalizado), cada número com fórmula, fonte, período, cobertura e confiança (CA-1-020); métricas calculáveis hoje (volume, idade média, tempo até pronto para atendimento, redistribuições, escalonamentos, negativas por papel, cobertura do evento criar); par de sucesso (tempo até proposta + acurácia), meta/tolerância, primeiro atendimento, retrabalho, conversão e SLA exibidos como BLOQUEADOS com motivo (CA-1-022, RN-1.018/1.019); duplicatas legadas declaradas e contadas uma única vez (RN-1.017); dicionário versionado em 04_fase-atual/dicionario-eventos-v1.md (7 eventos instrumentados, 6 grupos bloqueados). Provas: métricas validadas em Python contra os dados reais; UI conferida no preview (gestor vê, vendedor sem botão e com 0 eventos de auditoria vs 34 do gestor). Aprovado pelo champion (2026-09-27). | 2026-09-27 |
 
 ## Próxima reunião
 
