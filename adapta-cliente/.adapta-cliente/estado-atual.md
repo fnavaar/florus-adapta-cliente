@@ -9,8 +9,8 @@
 - verificacao_automatica: passou (v0.0.78 — TDD: RED provou que a v0.0.76 publicava tempo NEGATIVO (-22h) com evento contraditório e perdia evento duplicado/sem fuso; GREEN em Python com 5 adulterações PASSOU e regressão com dados limpos idêntica; debug v0.0.78 corrigiu NaN em contraditorios; regressão no preview confirmada: volume 7, idade 9,1 dias, cobertura 2/7, tempo não calculável, mensagem verde "Nenhuma inconsistência nos 34 eventos", ano passado zera sem erro)
 - aprendizado: capturado:06_notas/aprendizado-continuo/AP-2026-09-28-0710-fixture-prova-cenario-perigoso.md
 - ultima_acao: T-F1-011 concluída (v0.0.78): fase.md, STATUS.md (10/12, 83%) e changelog.md atualizados; prova revalidada do zero em scripts/tf1011-tdd.py
-- proxima_acao: nenhuma automática — próxima task (T-F1-009 ou T-F1-012) exige novo pedido do champion
-- atualizado_em: 2026-09-28T07:12:00-03:00
+- proxima_acao: T-F1-009 LIBERADA pelo consultor em 2026-09-30 (insumos na entrada do changelog de 2026-09-30) — executar o rollback aprovado conforme os insumos (aprovador Fábio; versão aprovada marcada em CP-F1-005 antes da falha; decisão de privacidade = retenção permanente/exclusão negada, responsável Fábio) e registrar as 4 evidências; depois T-F1-012 (avisar o consultor quando o relatório estiver pronto para revisão)
+- atualizado_em: 2026-09-30T15:17:00-03:00
 
 ---
 ## Análise T-F1-011 (resumo para retomada)
