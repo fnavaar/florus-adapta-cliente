@@ -1,3 +1,16 @@
+# Estado atual — Fase 2 liberada
+
+- task_id: nenhuma
+- fase: 2
+- champion: Fábio
+- etapa: aguardando seleção da T-F2-001
+- spec: adapta-cliente/04_fase-atual/specs/spec-2-001-cadastro-governado.md
+- teste_humano: não aplicável à liberação; obrigatório ao executar cada task
+- proxima_acao: selecionar T-F2-001, registrar fonte oficial e linha piloto
+- atualizado_em: 2026-10-02
+
+## Histórico anterior preservado
+
 # Estado atual — Adapta Cliente
 
 - task_id: nenhuma (T-F1-008 concluída em 2026-09-25; aguardando novo pedido do champion para selecionar a próxima)

@@ -1,41 +1,36 @@
 {
   "schemaVersion": "adapta-cliente-handoff/v1",
-  "phase": 1,
+  "phase": 2,
   "versions": {
     "package": "0.1.0",
     "adapta": "0.7.0",
     "adaptaCliente": "0.2.0"
   },
-  "generatedAt": "2026-08-20T15:51:27.674Z",
+  "generatedAt": "2026-10-02T21:22:09.703Z",
   "files": [
     {
-      "path": "04_fase-atual/README.md",
-      "sha256": "57843f15414253dfbcc46b12fc0860f4aa0481fefdd8440eca68b80a3663f4cc",
-      "classification": "template-publico"
-    },
-    {
       "path": "04_fase-atual/fase.md",
-      "sha256": "8cf61cc7664eb0b7bfbe41a67d03cbe8686e908e29f4f797e341af6b63fb2c76",
+      "sha256": "457b453a82fc20c5ec3f412338a5f1e955a811e7f76bcd6fec3e7aca90e85cd8",
       "classification": "fase-atual"
     },
     {
-      "path": "04_fase-atual/specs/spec-1-001-entrada-pedido-orcamento.md",
-      "sha256": "df8ca7a4cf7775eb28274a9d5d2908f82a9dd81a1128dd2f4fb4128592f5e73a",
+      "path": "04_fase-atual/specs/spec-2-001-cadastro-governado.md",
+      "sha256": "fc96e82ff9f06702d62c5fd8dc31d2ceb788c655d768c39ee1d30dc792c59605",
       "classification": "spec-fase-atual"
     },
     {
-      "path": "04_fase-atual/specs/spec-1-002-pipe-tags-dashboard.md",
-      "sha256": "5843ff250b74eacee5004386b9ad19ff7cf0a2782084a1d241ed67adb52536a6",
+      "path": "04_fase-atual/specs/spec-2-002-composicao-lote.md",
+      "sha256": "ca5f73d096a43707ac7163b2ab354c331550addea6bebe47ed7a70f612c83c6a",
       "classification": "spec-fase-atual"
     },
     {
-      "path": "04_fase-atual/specs/spec-1-003-rls-auditoria-recuperacao.md",
-      "sha256": "97704adb595c34b795a741d1bea54db5722810d314f4c987f657da7c52aee24b",
+      "path": "04_fase-atual/specs/spec-2-003-investimento-preco.md",
+      "sha256": "9619fe21c776ae0e7e71be01932cb5bcde68bac9ee2259766e921c02b2d45105",
       "classification": "spec-fase-atual"
     },
     {
-      "path": "04_fase-atual/specs/spec-1-004-baseline-metricas.md",
-      "sha256": "6dcae62f8c785c2f8d80872f36f9f89eae28e85a15b2887d605b535a8f156463",
+      "path": "04_fase-atual/specs/spec-2-004-governanca-calculadora.md",
+      "sha256": "662c608316c8f3e27338ad9306f3334d52deb318ae8bfce86b0f3e03918ab432",
       "classification": "spec-fase-atual"
     }
   ]

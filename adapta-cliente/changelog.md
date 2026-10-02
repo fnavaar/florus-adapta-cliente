@@ -52,3 +52,9 @@
 - 2026-08-25 · [Bob/ETHOS] · Tabela dinâmica de produtos na Avaliação do Pedido implementada.
 - 2026-08-20 · [Bob/ETHOS] · T-F1-001 concluída (v0.0.6): primeira versão do formulário de pedido.
 - 2026-08-20 · [consultoria Adapta] · Pasta operacional criada; Fase 1 aberta com 12 tasks em 3 ondas.
+
+## 2026-10-02 — Liberação da Fase 2
+
+- Autorização explícita de Felipe Navaar para publicar no GitHub; Fase 1 encerrada com 12/12 tasks aceitas e digest conferido.
+- Fase 1 arquivada em `05_entregas/fase-1/`; quatro SPECs, oito tasks e revisão do consultor entregues em `04_fase-atual/`.
+- T-F2-001 é a próxima task; nenhuma implementação da Fase 2 realizada. Restrições do champion preservadas.

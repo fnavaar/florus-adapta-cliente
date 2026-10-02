@@ -1,0 +1,59 @@
+{
+  "schemaVersion": "adapta-phase-closure/v1",
+  "phase": 1,
+  "closedAt": "2026-10-02T21:22:09.704Z",
+  "activeDigest": "66bee0dbe038b202be3b67d78476d0fd568e7b5270f3b03f739281fb8f2f31c9",
+  "files": [
+    {
+      "relative": "dicionario-eventos-v1.md",
+      "sha256": "155b6348ce4307ae6c05805eb210e29bc6b13ea9440a56df3f100a0ecb75a528"
+    },
+    {
+      "relative": "fase.md",
+      "sha256": "acfecd42cff557fc49fece48134f23bedcdb2d036abd216bd7552a4a416a4bec"
+    },
+    {
+      "relative": "operacao-rollback.md",
+      "sha256": "baecf418fe771afd7350109d2e5381819b021a09d19626dcb2e726ab3d9352a6"
+    },
+    {
+      "relative": "README.md",
+      "sha256": "57843f15414253dfbcc46b12fc0860f4aa0481fefdd8440eca68b80a3663f4cc"
+    },
+    {
+      "relative": "specs/spec-1-001-entrada-pedido-orcamento.md",
+      "sha256": "df8ca7a4cf7775eb28274a9d5d2908f82a9dd81a1128dd2f4fb4128592f5e73a"
+    },
+    {
+      "relative": "specs/spec-1-002-pipe-tags-dashboard.md",
+      "sha256": "5843ff250b74eacee5004386b9ad19ff7cf0a2782084a1d241ed67adb52536a6"
+    },
+    {
+      "relative": "specs/spec-1-003-rls-auditoria-recuperacao.md",
+      "sha256": "97704adb595c34b795a741d1bea54db5722810d314f4c987f657da7c52aee24b"
+    },
+    {
+      "relative": "specs/spec-1-004-baseline-metricas.md",
+      "sha256": "6dcae62f8c785c2f8d80872f36f9f89eae28e85a15b2887d605b535a8f156463"
+    }
+  ],
+  "checkSha256": "d352445dc4aeb235f706189570c1d2386253c0049751e90669433459c2491c38",
+  "manifestDrift": [
+    {
+      "path": "04_fase-atual/fase.md",
+      "status": "alterado-desde-manifesto",
+      "manifestSha256": "8cf61cc7664eb0b7bfbe41a67d03cbe8686e908e29f4f797e341af6b63fb2c76",
+      "currentSha256": "acfecd42cff557fc49fece48134f23bedcdb2d036abd216bd7552a4a416a4bec"
+    },
+    {
+      "path": "04_fase-atual/dicionario-eventos-v1.md",
+      "status": "novo-desde-manifesto",
+      "currentSha256": "155b6348ce4307ae6c05805eb210e29bc6b13ea9440a56df3f100a0ecb75a528"
+    },
+    {
+      "path": "04_fase-atual/operacao-rollback.md",
+      "status": "novo-desde-manifesto",
+      "currentSha256": "baecf418fe771afd7350109d2e5381819b021a09d19626dcb2e726ab3d9352a6"
+    }
+  ]
+}

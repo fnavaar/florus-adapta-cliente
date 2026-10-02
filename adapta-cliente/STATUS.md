@@ -1,16 +1,17 @@
 # STATUS — Projeto Florus Brasil — Processo Comercial
 
-> **Atualizado em:** 2026-09-29 · **Por:** Bob/ETHOS (execução) + consultoria Adapta
+> **Atualizado em:** 2026-10-02 · **Por:** consultoria Adapta
 
 **Repo do cliente:** https://github.com/fnavaar/florus-adapta-cliente
 
 ## Onde estamos
 
-- **Fase atual:** 1 — entrada estruturada, pedido/orçamento, qualificação e priorização · aberta em 2026-08-20 · reunião de fechamento a definir
-- **Objetivo desta fase:** organizar a entrada comercial, encaminhar pedidos ao CRM/DataCrazy, dar visibilidade à pipe e estabelecer um baseline rastreável.
-- **No prazo?** em acompanhamento — SPEC-1-001 completa (3/3), SPEC-1-002 completa (T-F1-004/005/006), T-F1-007, T-F1-008, T-F1-010, T-F1-011 e T-F1-012 concluídas; T-F1-009 concluída em 2026-09-29. **Fase 1 completa (12/12)** — fechamento formal da fase depende da validação do consultor (handoff).
-- **Tasks:** 12/12 (100%) — T-F1-001 a T-F1-012 concluídas (T-F1-012 concluída em 2026-09-29, v0.0.88–89).
-- **Próximas tasks elegíveis:** nenhuma na Fase 1 — aguardar validação do consultor no handoff e liberação da Fase 2.
+- **Fase atual:** 2 — Cadastro governado e calculadora de viabilidade · liberada em 2026-10-02 pela consultoria, com autorização explícita de Felipe Navaar.
+- **Objetivo:** governar catálogo, composição/lote, investimento/preço e auditoria da calculadora.
+- **Tasks:** 0/8 (0%) — nenhuma task da Fase 2 executada.
+- **Próxima task:** T-F2-001 — definir fonte oficial, linha piloto e modelar o cadastro governado (Fábio, 07/10/2026).
+- **Fase 1:** encerrada, 12/12 tasks aceitas; unidade preservada em `05_entregas/fase-1/`.
+- Executar uma task por vez com prova e teste humano do champion antes de avançar.
 
 ## Travas ativas
 
