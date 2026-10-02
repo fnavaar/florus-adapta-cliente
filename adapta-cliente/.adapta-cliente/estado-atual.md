@@ -1,44 +1,40 @@
 # Estado atual — Adapta Cliente
 
-- task_id: T-F1-012 (entregar relatório de baseline sem exposição indevida e obter revisão — SPEC-1-004, Onda 3)
+- task_id: T-F2-001 (definir fonte oficial, linha piloto e modelar o cadastro governado de produtos — SPEC-2-001, onda 1, prazo 07/10)
 - champion: Fábio
-- spec: 04_fase-atual/specs/spec-1-004-baseline-metricas.md
-- etapa: concluida
-- autorizacao_implementacao: confirmada (2026-09-29 11:44, "Sim." — após relatório de análise da T-F1-012)
-- teste_humano: aprovado (2026-09-29 ~11:58, champion: "Fiz isso e o resultado foi exatamente como você disse")
-- verificacao_automatica: passou (v0.0.88–89: TDD tf1012-tdd.py RED/GREEN/regressão; QA Skip completo — v0.0.88 falhou lint de hooks, corrigido na v0.0.89; UI gestor com seções novas e sem dado pessoal; vendedor sem acesso)
-- aprendizado: capturado:06_notas/aprendizado-continuo/AP-2026-09-29-1158-cache-bundle.md
-- emenda_pos_conclusao: toast 12s aplicado (v0.0.90, autorizada 29/09 18:08) — T-F1-009 permanece concluída
-- ultima_acao: D1/D2 aplicadas ao Relatório de Baseline (v0.0.91, QA Skip completo OK — seção "Meta e fórmula de acurácia", constantes META_TEMPO_PROPOSTA/FORMULA_ACURACIA, bloqueadas ajustadas, relatório v1.1)
-- proxima_acao: aguardando teste humano do champion no relatório v1.1 (Ctrl+F5 no preview, login gestor, seção "Meta e fórmula de acurácia"); Fase 2 segue bloqueada pelo pacote da consultoria (DÚVIDA no changelog 02/10); T-F1-012 aguarda revisão do consultor
-- atualizado_em: 2026-10-02T19:30:00-03:00
+- spec: 04_fase-atual/specs/spec-2-001-cadastro-governado.md
+- etapa: aguardando_teste_humano
+- autorizacao_implementacao: confirmada (2026-10-02 20:26, "Pode implementar... só um detalhe: eu não fiz o teste humano da v0.0.91. Avise quando eu tiver que fazer." — após relatório de análise da T-F2-001; teste humano da v0.0.91 segue pendente, avisar o champion junto do teste desta task)
+- teste_humano: pendente (roteiro apresentado 02/10 — inclui o teste pendente da v0.0.91)
+- verificacao_automatica: passou (v0.0.92–94: TDD tf2001-tdd.py GREEN 11/11; QA Skip completo OK; provas via API 13/13 — RLS vendedor só aprovados, gestor tudo, SKU duplicado 400, exclusão 403, aprovação exige motivo ≥10, vendedor não cria, auditoria registra; debug v0.0.93 hook inline (lição JSVM) e v0.0.94 número ≤0 = ausente (PocketBase normaliza null→0, prova PROD-T09))
+- aprendizado: pendente
+- ultima_acao: implementação completa da T-F2-001 — migration 0015 (coleção produtos), hook validacao_produtos, src/lib/produtos.ts, tela CatalogoProdutos + botão Catálogo no Layout; TDD GREEN 11/11; provas via API 13/13
+- proxima_acao: aguardar teste humano do champion (roteiro de 2 tarefas: v0.0.94 catálogo + v0.0.91 relatório baseline); não concluir nem iniciar outra task antes
+- atualizado_em: 2026-10-02T21:00:00-03:00
 
 ---
-## Análise T-F1-012 (resumo para retomada)
-- Critérios: CA-1-022 (par sucesso + métricas de proteção aprovados ou bloqueados, nunca meta inventada) e CA-1-023 (sem exposição de dados pessoais desnecessários).
-- Já existe (T-F1-010/011): RelatorioBaseline.tsx com seletor de período, métricas com fórmula/fonte/cobertura/confiança, bloqueadas declaradas, qualidade dos dados, dicionário v1; validação de dado pessoal em VALOR de evento.
-- Recorte da T-F1-012 (o que falta): (1) varredura de exposição do relatório INTEIRO (campos exibidos vs. necessidade — ex.: contato_nome/razao_social em amostras); (2) seção "Amostras anonimizadas" (rastreamento número→fonte sem dado pessoal); (3) seção "Aceite do gestor/consultor" (aceite ou bloqueio documentado, com versão do relatório e data de extração); (4) numeração de versão do relatório no próprio relatório; (5) entrega em 05_entregas/T-F1-012 + revisão do champion.
-- Decisões pendentes do champion (não bloqueiam o início, mas fecham a task): aprovar a política de exposição mínima proposta; definir quem assina o aceite (só ele ou também consultor).
-- Predecessoras T-F1-010/011 concluídas — task elegível.
+## Análise T-F2-001 (resumo para retomada)
+- Critérios: CA-2-001 (cadastro gera produto_id único com estado), CA-2-002 (campo mínimo ausente → pendente_aprovacao com pendência nomeada, nunca visível ao vendedor), CA-2-003 (sem fonte/vigência vencida → pendência explícita, última versão aprovada mantida).
+- Recorte entregue: migration 0015 criando coleção `produtos` (produto_id, nome, linha, SKU, unidade, densidade opcional, preco_kg, lote_minimo, taxas, fonte, vigência, status rascunho/pendente_aprovacao/aprovado/substituido, versao, substituido_por, responsável) com RLS (vendedor lê só aprovados; gestor/admin tudo; exclusão bloqueada) + hook de auditoria/validação + tela de cadastro/consulta + TDD CP-F2-001 (3 completos, 1 sem densidade, 1 vencido).
+- Insumos embutidos que o champion responde DENTRO da task (não travam o início): (I1) fonte oficial do catálogo — ERP × Excel controlado × cadastro governado; (I2) linha/produto piloto a migrar; (I3) responsável por produto/preço; (I4) periodicidade de atualização.
+- Não alterar: Cotação (trava 16/09), campos travados do pedido (trava 26/08), coleções da Fase 1 (exceto leitura).
+- Padrões reutilizados da Fase 1: RLS por papel, auditoria server-side, hooks JSVM inline, exclusão negada (retenção), estados + substituido_por.
 
-- verificacao_automatica: passou (v0.0.79–0.0.80 — QA Skip OK; provas via API: vendedor rollback → 400 + evento negar; gestor rollback com motivo → create OK + evento acao=rollback com antes/depois/motivo; fluxo real provado na linhagem 20260924-0001 (v3 criada com rollback_de, v2 marcada substituída, histórico intacto, estado pré-prova restaurado depois); debug v0.0.80: hook do CREATE gravava evento ANTES de e.next() → evento "permitido" órfão quando o create falhava — corrigido e reprovado (falha → 0 eventos; sucesso → 1 evento); exportação CSV da auditoria implementada na tela Usuários e Acessos; doc de operação em 04_fase-atual/operacao-rollback.md; NOTA: 3 eventos órfãos de prova ficaram na auditoria (20260928-9001/9002 duplicado) — evidência preservada, não apagada)
-- aprendizado: capturado:AP-2026-09-29-1130 (confirmação em seletor pré-preenchido via onOpenChange) + AP-2026-09-28-1330 (invariante de linhagem em todo caminho de gravação)
-- ultima_acao: Emenda 3 (v0.0.86, ordem direta do champion 29/09): alerta da Cotação agora some quando o vendedor ABRIR o seletor e CONFIRMAR o produto (mesmo o já sugerido — captura via onOpenChange, pois o seletor vem pré-preenchido e onValueChange não dispara) e VOLTA se a descrição mudar após a confirmação. Provas: 3/3 linhas sumiram ao confirmar; alerta voltou (2→3) ao mudar descrição pós-confirmação. Mini-ciclo do champion funcionou: 20260929-0002 v8 pronto_para_atendimento, celular válido.
-- proxima_acao: nenhuma na task — T-F1-009 concluída; próxima task (T-F1-012) exige novo pedido do champion
-- atualizado_em: 2026-09-29T14:50:00-03:00
+---
+## Histórico — T-F1-012 (concluída em 2026-09-29)
+- implementada v0.0.88–89; aprovada pelo champion ("Fiz isso e o resultado foi exatamente como você disse"); emenda toast 12s v0.0.90; D1/D2 aplicadas ao relatório em v0.0.91 (seção "Meta e fórmula de acurácia", relatório v1.1) — teste humano pendente.
 
 ---
 ## Histórico — T-F1-009 (concluída em 2026-09-29)
-- implementada v0.0.79–80; debugs v0.0.81–82 (seletor de usuários, alerta Cotação, invariante de linhagem no rascunho); emendas v0.0.83–87 (trava anti-duplo-clique, limpeza LIMPEZA-PROVA, banner de histórico, governança oculta no histórico, alerta da Cotação onOpenChange, hook de rollback retroativo).
+- implementada v0.0.79–80; debugs v0.0.81–82; emendas v0.0.83–87; prova do consultor 01/10 (11/11 PASS, evidências em 05_entregas/T-F1-009-operacao-rollback-evidencias.md).
 - aprendizado: capturado:AP-2026-09-29-1130 + AP-2026-09-28-1330.
 
 ---
 ## Análise T-F1-011 (resumo para retomada)
 - Critérios: CA-1-019 (estimativa de ata/vídeo nunca vira baseline) e CA-1-021 (evento ausente/duplicado/contraditório fica não calculável, sem interpolação).
-- Implementado: camada de validação em src/lib/baseline.ts (parseSeguro, validarEventos, temDadoPessoal) + seção "Qualidade dos dados (CA-1-021)" no RelatorioBaseline.tsx (mensagem verde quando limpo; tabela com contagem e tratamento quando há problemas).
-- TDD em scripts/tf1011-tdd.py (durável; NÃO usar tmp/ — efêmero): RED provou -22h publicado pela v0.0.76; GREEN com 5 adulterações PASSOU; regressão com dados limpos idêntica.
+- Implementado: camada de validação em src/lib/baseline.ts (parseSeguro, validarEventos, temDadoPessoal) + seção "Qualidade dos dados (CA-1-021)" no RelatorioBaseline.tsx.
+- TDD em scripts/tf1011-tdd.py: RED provou -22h publicado pela v0.0.76; GREEN com 5 adulterações PASSOU; regressão com dados limpos idêntica.
 - Debug v0.0.78: chave `contraditorios` não inicializada em validarEventos → NaN → NaN===0 falso → tabela vazia em vez da mensagem verde.
-- Questionamento do champion sobre idade média 9,1→9,4 dias: comportamento correto — a fórmula é (agora − created), medida na hora da geração do relatório.
 
 ---
 ## Histórico — T-F1-010 (concluída em 2026-09-27)
@@ -51,9 +47,8 @@
 
 ---
 ## Histórico — T-F1-008 (concluída em 2026-09-25)
-- implementada em v0.0.63 (24/09); debugs e emendas v0.0.64–v0.0.69 (edição em branco, Pipe sem substituídos, número órfão, preservação em localStorage com linhagem); ferramenta de expiração de sessão v0.0.70–v0.0.73.
-- aprendizado: capturado:AP-2026-09-25-0940-expiracao-sessao-rotacao-segredo.md + AP-2026-09-25-0941-jsvm-registro-rota.md
-- nota: duplicata legada no banco (duas linhas de 20260921-0003 criadas em 21/09 21:25, 1ms de diferença, antes da task) — mecanismo atual não a causa; sem ocorrência nova. Limpeza opcional a decidir pelo champion.
+- implementada em v0.0.63 (24/09); debugs e emendas v0.0.64–v0.0.69; ferramenta de expiração de sessão v0.0.70–v0.0.73.
+- aprendizado: capturado:AP-2026-09-25-0940 + AP-2026-09-25-0941.
 
 ---
 ## Histórico — T-F1-007 (concluída em 2026-09-24)
