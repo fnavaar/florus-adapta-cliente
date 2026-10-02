@@ -7,6 +7,7 @@
 
 ## Registro
 
+- 2026-10-02 · [Bob/ETHOS] · D1/D2 aplicadas ao Relatório de Baseline (v0.0.91): seção nova "Meta e fórmula de acurácia (decisões D1/D2 do champion)" com meta 24h úteis ±20% (fonte/vigência/revisão em 1 mês) e fórmula de acurácia por campo (produto ID, unidade mL/g, quantidade, preço unitário, condição; exata = 5/5); constantes META_TEMPO_PROPOSTA e FORMULA_ACURACIA em src/lib/baseline.ts; entradas "Acurácia da proposta" e "Meta e tolerância" saem das bloqueadas (a definição agora existe); par tempo→proposta segue BLOQUEADO até o evento proposta_enviada (CA-1-022); relatório v1.0→v1.1. QA Skip completo OK (setup/static/build/test) — v0.0.91, hash aef4c53.
 - 2026-10-02 · [Bob/ETHOS] · DÚVIDA: (1) Fase 2 liberada pelo champion (D6), mas o pacote da fase (04_fase-atual/fase.md + specs da Fase 2) ainda não foi publicado no repositório — pela convenção, o detalhe da fase é preparado pela consultoria; solicitar publicação. (2) Confirmar o escopo da Fase 2: a visão-do-projeto indica "Cadastro governado, migração piloto e calculadora de viabilidade", enquanto o registro D6 do handoff citou "follow-up, amostra, handoff, fechamento" (fases 2–5) — qual é o recorte da Fase 2? (3) As correções mencionadas pelo consultor no sistema/banco não apareceram como versão Skip (v0.0.90) nem migration (até 0014) — pedir indicação do que foi alterado.
 - 2026-10-02 · [champion] · DECISÕES D1–D6 registradas pelo champion após o handoff: D1 fórmula de acurácia = erro por campo (produto ID, unidade mL/g, quantidade, preço unitário, condição; exata = 5/5; acurácia = % de propostas exatas); D2 meta = 24h úteis oportunidade→proposta, tolerância ±20%, revisão após 1 mês de dados; D3 toast 12s já aplicada (v0.0.90); D4 duplicata legada 20260921-0003 marcada LIMPEZA-PROVA (2 registros patcheados via API, histórico preservado, nada apagado); D5 DataCrazy mantido como última etapa; D6 FASE 2 LIBERADA (escopo: follow-up, amostra, handoff, fechamento).
 - 2026-10-01 · [Bob/ETHOS] · T-F1-009: prova da operação de rollback aprovado executada conforme os insumos do consultor (30/09) — linhagem de teste 20261001-9001: versão aprovada marcada ANTES da falha (tag cp-f1-005-aprovada), vendedor tentou rollback → 400 + evento negar, gestor criou v2 com rollback_de e motivo registrando a aprovação de Fábio (CP-F1-005), linhagem íntegra (1 vigente, histórico preservado), exclusão negada (403, retenção permanente), RLS provada (vendedor 15 / gestor 34), duplicata legada 20260921-0003 inventariada (2 registros, sem alteração). 11/11 provas PASS. Evidências: 05_entregas/T-F1-009-operacao-rollback-evidencias.md; script scripts/tf1009-prova-consultor.py.
@@ -52,9 +53,3 @@
 - 2026-08-25 · [Bob/ETHOS] · Tabela dinâmica de produtos na Avaliação do Pedido implementada.
 - 2026-08-20 · [Bob/ETHOS] · T-F1-001 concluída (v0.0.6): primeira versão do formulário de pedido.
 - 2026-08-20 · [consultoria Adapta] · Pasta operacional criada; Fase 1 aberta com 12 tasks em 3 ondas.
-
-## 2026-10-02 — Liberação da Fase 2
-
-- Autorização explícita de Felipe Navaar para publicar no GitHub; Fase 1 encerrada com 12/12 tasks aceitas e digest conferido.
-- Fase 1 arquivada em `05_entregas/fase-1/`; quatro SPECs, oito tasks e revisão do consultor entregues em `04_fase-atual/`.
-- T-F2-001 é a próxima task; nenhuma implementação da Fase 2 realizada. Restrições do champion preservadas.

@@ -1,16 +1,3 @@
-# Estado atual — Fase 2 liberada
-
-- task_id: nenhuma
-- fase: 2
-- champion: Fábio
-- etapa: aguardando seleção da T-F2-001
-- spec: adapta-cliente/04_fase-atual/specs/spec-2-001-cadastro-governado.md
-- teste_humano: não aplicável à liberação; obrigatório ao executar cada task
-- proxima_acao: selecionar T-F2-001, registrar fonte oficial e linha piloto
-- atualizado_em: 2026-10-02
-
-## Histórico anterior preservado
-
 # Estado atual — Adapta Cliente
 
 - task_id: T-F1-012 (entregar relatório de baseline sem exposição indevida e obter revisão — SPEC-1-004, Onda 3)
@@ -22,9 +9,9 @@
 - verificacao_automatica: passou (v0.0.88–89: TDD tf1012-tdd.py RED/GREEN/regressão; QA Skip completo — v0.0.88 falhou lint de hooks, corrigido na v0.0.89; UI gestor com seções novas e sem dado pessoal; vendedor sem acesso)
 - aprendizado: capturado:06_notas/aprendizado-continuo/AP-2026-09-29-1158-cache-bundle.md
 - emenda_pos_conclusao: toast 12s aplicado (v0.0.90, autorizada 29/09 18:08) — T-F1-009 permanece concluída
-- ultima_acao: análise profunda da T-F1-012 concluída (SPEC-1-004 lida; RelatorioBaseline.tsx e baseline.ts inspecionados; dados reais inventariados: 84 eventos, 32 pedidos, 10 usuários)
-- proxima_acao: BLOQUEIO de fase — Fase 2 não pode abrir formalmente sem o pacote da consultoria (fase.md + specs); DÚVIDA registrada no changelog (02/10) com confirmação de escopo pendente; champion encaminha ao consultor
-- atualizado_em: 2026-10-02T17:55:00-03:00
+- ultima_acao: D1/D2 aplicadas ao Relatório de Baseline (v0.0.91, QA Skip completo OK — seção "Meta e fórmula de acurácia", constantes META_TEMPO_PROPOSTA/FORMULA_ACURACIA, bloqueadas ajustadas, relatório v1.1)
+- proxima_acao: aguardando teste humano do champion no relatório v1.1 (Ctrl+F5 no preview, login gestor, seção "Meta e fórmula de acurácia"); Fase 2 segue bloqueada pelo pacote da consultoria (DÚVIDA no changelog 02/10); T-F1-012 aguarda revisão do consultor
+- atualizado_em: 2026-10-02T19:30:00-03:00
 
 ---
 ## Análise T-F1-012 (resumo para retomada)
