@@ -10,8 +10,8 @@
 - aprendizado: capturado:06_notas/aprendizado-continuo/AP-2026-09-29-1158-cache-bundle.md
 - emenda_pos_conclusao: toast 12s aplicado (v0.0.90, autorizada 29/09 18:08) — T-F1-009 permanece concluída
 - ultima_acao: análise profunda da T-F1-012 concluída (SPEC-1-004 lida; RelatorioBaseline.tsx e baseline.ts inspecionados; dados reais inventariados: 84 eventos, 32 pedidos, 10 usuários)
-- proxima_acao: nenhuma — Fase 1 12/12; T-F1-009 reprovada conforme insumos do consultor (01/10, 11/11 provas PASS, evidências em 05_entregas/T-F1-009-operacao-rollback-evidencias.md); T-F1-012 aguarda revisão do consultor (aviso pendente)
-- atualizado_em: 2026-10-01T17:30:00-03:00
+- proxima_acao: nenhuma automática — D1–D6 resolvidas pelo champion (02/10; D4 aplicada no banco), Fase 2 LIBERADA (follow-up, amostra, handoff, fechamento); abrir a primeira task da Fase 2 exige novo pedido do champion; T-F1-012 segue aguardando revisão do consultor
+- atualizado_em: 2026-10-02T17:30:00-03:00
 
 ---
 ## Análise T-F1-012 (resumo para retomada)
