@@ -1,39 +1,50 @@
-# Estado atual — Fase 2 liberada
-
-- task_id: nenhuma
-- fase: 2
-- champion: Fábio
-- etapa: aguardando seleção da T-F2-001
-- spec: adapta-cliente/04_fase-atual/specs/spec-2-001-cadastro-governado.md
-- teste_humano: não aplicável à liberação; obrigatório ao executar cada task
-- proxima_acao: selecionar T-F2-001, registrar fonte oficial e linha piloto
-- atualizado_em: 2026-10-02
-
-## Histórico anterior preservado
-
 # Estado atual — Adapta Cliente
 
-- task_id: nenhuma (T-F1-008 concluída em 2026-09-25; aguardando novo pedido do champion para selecionar a próxima)
+- task_id: T-F2-001 (definir fonte oficial, linha piloto e modelar o cadastro governado de produtos — SPEC-2-001, onda 1, prazo 07/10)
 - champion: Fábio
-- spec: 04_fase-atual/specs/spec-1-003-rls-auditoria-recuperacao.md
-- etapa: concluida
-- autorizacao_implementacao: confirmada (2026-09-24 10:58 — "Pode implementar este plano", após relatório de análise)
-- teste_humano: aprovado (2026-09-25 — três testes do champion: Teste 1/cenário 4 "substituído sem botão de edição, aviso correto, histórico intacto" 08:05; Teste 2/cenário 2 "sessão expirada com recuperação dos dados e alterações, mesmo número" ~09:10, com expiração manual via rotação de segredo v0.0.70–0.0.73; Teste 3/cenário 3 "Simular falha + Reconciliar" ~09:15 — "Teste 3 passou — pode concluir a T-F1-008")
-- verificacao_automatica: passou (QA v0.0.63–v0.0.73 OK; provas refeitas na conclusão: RLS 404 em pedido alheio; negativa de troca de vendedor auditada; nenhuma linhagem com duas versões vigentes — duplicata legada de 21/09 anterior à task, sem ocorrência nova; DB sem órfãos após falha de gravação)
-- aprendizado: capturado:06_notas/aprendizado-continuo/AP-2026-09-25-0940-expiracao-sessao-rotacao-segredo.md + AP-2026-09-25-0941-jsvm-registro-rota.md
-- ultima_acao: fechamento da T-F1-008 — fase.md, STATUS.md (7/12, 58%), changelog, entregas e aprendizados atualizados
-- proxima_acao: aguardar pedido do champion para selecionar a próxima task (elegíveis: T-F1-006 — distribuição/auditoria da pipe, SPEC-1-002; T-F1-010 — dicionário de eventos/baseline, SPEC-1-004)
-- atualizado_em: 2026-09-25T09:45:00-03:00
+- spec: 04_fase-atual/specs/spec-2-001-cadastro-governado.md
+- etapa: aguardando_teste_humano
+- autorizacao_implementacao: confirmada (2026-10-02 20:26, "Pode implementar"); emenda das tabelas autorizada em 2026-10-07 ("Sim", após definir limiar 35% abaixo)
+- teste_humano: pendente (T-F2-001 catálogo + emenda industrialização v0.0.96–97 + relatório baseline v0.0.91)
+- verificacao_automatica: passou (v0.0.96 tabela jan-2025 4 pastas + alerta industrialização, QA Skip OK; v0.0.97 custo de referência por tipo, QA OK; TDD tf2001-industrializacao-tdd.py 12/12 + validação JSON do app 16/16; fórmula validada centavo a centavo contra a planilha do champion)
+- aprendizado: pendente
+- ultima_acao: emenda industrialização aplicada (v0.0.96–97) — 4 pastas (99 cosméticos IDs normalizados, 8 perfumaria, industrialização bases 27/21/12, 4 serviços); alerta na Cotação quando objetivo < 65% do custo da Perfumaria do MESMO tipo, com sugestões Premium/Standard/Popular e concentração exigida do cliente; prova na tela incompleta na sessão do assistente (suspeita de bundle em cache — aguardando Ctrl+F5)
+- proxima_acao: champion testar com Ctrl+F5: Cotação com "Perfume corporal 20%", 100mL, objetivo R$15,00 → alerta azul com Premium R$11,66 / Standard R$11,18 / Popular R$10,46; pendentes também teste da T-F2-001 (catálogo) e da v0.0.91 (baseline)
+- atualizado_em: 2026-10-07T18:55:00-03:00
+
+---
+## Análise T-F2-001 (resumo para retomada)
+- Critérios: CA-2-001 (cadastro gera produto_id único com estado), CA-2-002 (campo mínimo ausente → pendente_aprovacao com pendência nomeada, nunca visível ao vendedor), CA-2-003 (sem fonte/vigência vencida → pendência explícita, última versão aprovada mantida).
+- Recorte entregue: migration 0015 criando coleção `produtos` (produto_id, nome, linha, SKU, unidade, densidade opcional, preco_kg, lote_minimo, taxas, fonte, vigência, status rascunho/pendente_aprovacao/aprovado/substituido, versao, substituido_por, responsável) com RLS (vendedor lê só aprovados; gestor/admin tudo; exclusão bloqueada) + hook de auditoria/validação + tela de cadastro/consulta + TDD CP-F2-001.
+- Insumos embutidos que o champion responde DENTRO da task (não travam o início): (I1) fonte oficial do catálogo — ERP × Excel controlado × cadastro governado; (I2) linha/produto piloto a migrar; (I3) responsável por produto/preço; (I4) periodicidade de atualização.
+- Não alterar: Cotação (trava 16/09), campos travados do pedido (trava 26/08), coleções da Fase 1 (exceto leitura).
+- Padrões reutilizados da Fase 1: RLS por papel, auditoria server-side, hooks JSVM inline, exclusão negada (retenção), estados + substituido_por.
+
+---
+## Histórico — T-F1-012 (concluída em 2026-09-29)
+- implementada v0.0.88–89; aprovada pelo champion ("Fiz isso e o resultado foi exatamente como você disse"); emenda toast 12s v0.0.90; D1/D2 aplicadas ao relatório em v0.0.91 (seção "Meta e fórmula de acurácia", relatório v1.1) — teste humano pendente.
+
+---
+## Histórico — T-F1-009 (concluída em 2026-09-29)
+- implementada v0.0.79–80; debugs v0.0.81–82; emendas v0.0.83–87; prova do consultor 01/10 (11/11 PASS, evidências em 05_entregas/T-F1-009-operacao-rollback-evidencias.md).
+- aprendizado: capturado:AP-2026-09-29-1130 + AP-2026-09-28-1330.
+
+---
+## Análise T-F1-011 (resumo para retomada)
+- Critérios: CA-1-019 e CA-1-021. Implementado: camada de validação em src/lib/baseline.ts + seção "Qualidade dos dados" no RelatorioBaseline.tsx. TDD em scripts/tf1011-tdd.py. Debug v0.0.78: chave `contraditorios` não inicializada.
+
+---
+## Histórico — T-F1-010 (concluída em 2026-09-27)
+- implementada em v0.0.76; aprovado; aprendizado:AP-2026-09-27-2205.
+
+---
+## Histórico — T-F1-006 (concluída em 2026-09-27)
+- implementada em v0.0.74–75; aprovado ("Funcionou"); aprendizado:AP-2026-09-27-1830.
 
 ---
 ## Histórico — T-F1-008 (concluída em 2026-09-25)
-- implementada em v0.0.63 (24/09); debugs e emendas v0.0.64–v0.0.69 (edição em branco, Pipe sem substituídos, número órfão, preservação em localStorage com linhagem); ferramenta de expiração de sessão v0.0.70–v0.0.73.
-- teste_humano: aprovado (25/09 — Testes 1, 2 e 3; ver detalhe no campo teste_humano acima).
-- aprendizado: capturado:06_notas/aprendizado-continuo/AP-2026-09-25-0940-expiracao-sessao-rotacao-segredo.md + AP-2026-09-25-0941-jsvm-registro-rota.md
-- nota: duplicata legada no banco (duas linhas de 20260921-0003 criadas em 21/09 21:25, 1ms de diferença, antes da task) — mecanismo atual não a causa; sem ocorrência nova. Limpeza opcional a decidir pelo champion.
+- implementada v0.0.63; debugs/emendas v0.0.64–v0.0.73; aprendizado:AP-2026-09-25-0940 + AP-2026-09-25-0941.
 
 ---
 ## Histórico — T-F1-007 (concluída em 2026-09-24)
-- implementada em v0.0.58 (commit a048f953); debug das regras de auditoria corrigido em v0.0.60 (migration 0012); badge "Ativo" do champion corrigido em v0.0.62 (migration 0013).
-- teste_humano: aprovado (23/09 20:08 "Tudo funcionou corretamente" + reteste 24/09 07:12 "Funcionou").
-- aprendizado: capturado:06_notas/aprendizado-continuo/AP-2026-09-23-2015-colecao-nova-jsvm-regras.md
+- implementada v0.0.58; debug v0.0.60; badge v0.0.62; aprendizado:AP-2026-09-23-2015.
