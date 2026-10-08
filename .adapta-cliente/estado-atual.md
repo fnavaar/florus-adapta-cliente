@@ -43,8 +43,8 @@
 
 ---
 ## Histórico — T-F1-008 (concluída em 2026-09-25)
-- implementada v0.0.63; debugs/emendas v0.0.64–v0.0.73; aprendizado:AP-2026-09-25-0940 + AP-2026-09-25-0941.
+- implementada em v0.0.63; debugs/emendas v0.0.64–v0.0.73; aprendizado:AP-2026-09-25-0940 + AP-2026-09-25-0941.
 
 ---
 ## Histórico — T-F1-007 (concluída em 2026-09-24)
-- implementada v0.0.58; debug v0.0.60; badge v0.0.62; aprendizado:AP-2026-09-23-2015.
+- implementada em v0.0.58; debug v0.0.60; badge v0.0.62; aprendizado:AP-2026-09-23-2015.
