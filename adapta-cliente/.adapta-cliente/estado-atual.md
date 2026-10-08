@@ -4,13 +4,13 @@
 - champion: Fábio
 - spec: 04_fase-atual/specs/spec-2-001-cadastro-governado.md
 - etapa: aguardando_teste_humano
-- autorizacao_implementacao: confirmada (2026-10-02 20:26, "Pode implementar... só um detalhe: eu não fiz o teste humano da v0.0.91. Avise quando eu tiver que fazer." — após relatório de análise da T-F2-001; teste humano da v0.0.91 segue pendente, avisar o champion junto do teste desta task)
-- teste_humano: pendente (champion iniciou o teste 02/10 ~20:47 e deu feedback — emenda v0.0.95 aplicada; aguardando retomada do teste + insumos I1/I2)
-- verificacao_automatica: passou (v0.0.92–95: TDD tf2001-tdd.py GREEN 11/11; QA Skip completo OK; provas via API 13/13 — RLS vendedor só aprovados, gestor tudo, SKU duplicado 400, exclusão 403, aprovação exige motivo ≥10, vendedor não cria, auditoria registra; debug v0.0.93 hook inline (lição JSVM); v0.0.94 número ≤0 = ausente (PocketBase normaliza null→0); v0.0.95 limpeza da massa de teste + vigência DD/MM/AAAA)
+- autorizacao_implementacao: confirmada (2026-10-02 20:26, "Pode implementar"); emenda das tabelas autorizada em 2026-10-07 ("Sim", após definir limiar 35% abaixo)
+- teste_humano: pendente (T-F2-001 catálogo + emenda industrialização v0.0.96–97 + relatório baseline v0.0.91)
+- verificacao_automatica: passou (v0.0.96 tabela jan-2025 4 pastas + alerta industrialização, QA Skip OK; v0.0.97 custo de referência por tipo, QA OK; TDD tf2001-industrializacao-tdd.py 12/12 + validação JSON do app 16/16; fórmula validada centavo a centavo contra a planilha do champion)
 - aprendizado: pendente
-- ultima_acao: emenda pós-feedback do champion (v0.0.95, QA OK) — massa de teste CP-F2-001 marcada substituido/limpeza-prova (catálogo zerado, histórico preservado), vigência exibida DD/MM/AAAA; insumos I1 (fonte oficial = tabela jan-2025?) e I2 (linha piloto = shampoos da tabela?) aguardando o champion
-- proxima_acao: aguardar resposta I1/I2 do champion e retomada do teste humano; popular o catálogo com produtos reais da tabela jan-2025 após confirmação
-- atualizado_em: 2026-10-02T21:20:00-03:00
+- ultima_acao: emenda industrialização aplicada (v0.0.96–97) — 4 pastas (99 cosméticos IDs normalizados, 8 perfumaria, industrialização bases 27/21/12, 4 serviços); alerta na Cotação quando objetivo < 65% do custo da Perfumaria do MESMO tipo, com sugestões Premium/Standard/Popular e concentração exigida do cliente; prova na tela incompleta na sessão do assistente (suspeita de bundle em cache — aguardando Ctrl+F5)
+- proxima_acao: champion testar com Ctrl+F5: Cotação com "Perfume corporal 20%", 100mL, objetivo R$15,00 → alerta azul com Premium R$11,66 / Standard R$11,18 / Popular R$10,46; pendentes também teste da T-F2-001 (catálogo) e da v0.0.91 (baseline)
+- atualizado_em: 2026-10-07T18:55:00-03:00
 
 ---
 ## Análise T-F2-001 (resumo para retomada)
