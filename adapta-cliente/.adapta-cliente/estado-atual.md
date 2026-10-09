@@ -3,19 +3,20 @@
 - task_id: T-F2-001 (definir fonte oficial, linha piloto e modelar o cadastro governado de produtos — SPEC-2-001, onda 1, prazo 07/10)
 - champion: Fábio
 - spec: 04_fase-atual/specs/spec-2-001-cadastro-governado.md
-- etapa: aguardando_teste_humano
-- autorizacao_implementacao: confirmada (2026-10-02 20:26, "Pode implementar"); emenda das tabelas autorizada em 2026-10-07 ("Sim", após definir limiar 35% abaixo)
-- teste_humano: pendente (T-F2-001 catálogo + emenda industrialização v0.0.96–97 + relatório baseline v0.0.91)
-- verificacao_automatica: passou (v0.0.96 tabela jan-2025 4 pastas + alerta industrialização, QA Skip OK; v0.0.97 custo de referência por tipo, QA OK; TDD tf2001-industrializacao-tdd.py 12/12 + validação JSON do app 16/16; fórmula validada centavo a centavo contra a planilha do champion)
-- aprendizado: pendente
-- ultima_acao: emenda industrialização aplicada (v0.0.96–97) — 4 pastas (99 cosméticos IDs normalizados, 8 perfumaria, industrialização bases 27/21/12, 4 serviços); alerta na Cotação quando objetivo < 65% do custo da Perfumaria do MESMO tipo, com sugestões Premium/Standard/Popular e concentração exigida do cliente; prova na tela incompleta na sessão do assistente (suspeita de bundle em cache — aguardando Ctrl+F5)
-- proxima_acao: champion testar com Ctrl+F5: Cotação com "Perfume corporal 20%", 100mL, objetivo R$15,00 → alerta azul com Premium R$11,66 / Standard R$11,18 / Popular R$10,46; pendentes também teste da T-F2-001 (catálogo) e da v0.0.91 (baseline)
-- atualizado_em: 2026-10-07T18:55:00-03:00
+- etapa: concluida
+- autorizacao_implementacao: confirmada (2026-10-02 20:26, "Pode implementar"); emenda das tabelas autorizada em 2026-10-07 ("Sim", após definir limiar 35% abaixo); emenda Linhas e Fontes autorizada em 2026-10-09 ("sugiro que tenha um local para fazer esse tipo de cadastro")
+- teste_humano: aprovado (2026-10-09 13:20, champion: "a Linha e Fonte apareceram como uma caixa de seleção e ficou ótimo. Portanto, está aprovado")
+- verificacao_automatica: passou (revalidação de encerramento 7/7: CA-2-001/002/003, RN-2.004/2.005, emenda dominios 10+4; TDD 11/11; provas API 13/13)
+- aprendizado: capturado:06_notas/aprendizado-continuo/AP-2026-10-09-1345-migrate-um-par-por-arquivo-e-listas-governadas.md
+- ultima_acao: T-F2-001 concluída e aprovada (v0.0.104; fase.md [x], STATUS 1/8, changelog registrado)
+- proxima_acao: aguardar novo pedido do champion (próxima task elegível: T-F2-002, exige insumos I1–I4)
+- atualizado_em: 2026-10-09T13:45:00-03:00
 
 ---
 ## Análise T-F2-001 (resumo para retomada)
 - Critérios: CA-2-001 (cadastro gera produto_id único com estado), CA-2-002 (campo mínimo ausente → pendente_aprovacao com pendência nomeada, nunca visível ao vendedor), CA-2-003 (sem fonte/vigência vencida → pendência explícita, última versão aprovada mantida).
 - Recorte entregue: migration 0015 criando coleção `produtos` (produto_id, nome, linha, SKU, unidade, densidade opcional, preco_kg, lote_minimo, taxas, fonte, vigência, status rascunho/pendente_aprovacao/aprovado/substituido, versao, substituido_por, responsável) com RLS (vendedor lê só aprovados; gestor/admin tudo; exclusão bloqueada) + hook de auditoria/validação + tela de cadastro/consulta + TDD CP-F2-001.
+- Emenda "Linhas e Fontes" (v0.0.101–104): coleção dominios (migration 0016) + semente (0017: 10 linhas jan-2025 + 4 fontes), hook validacao_dominios, tela ListaDominios (incluir/alterar/desativar), Linha/Fonte como Select no Catálogo.
 - Insumos embutidos que o champion responde DENTRO da task (não travam o início): (I1) fonte oficial do catálogo — ERP × Excel controlado × cadastro governado; (I2) linha/produto piloto a migrar; (I3) responsável por produto/preço; (I4) periodicidade de atualização.
 - Não alterar: Cotação (trava 16/09), campos travados do pedido (trava 26/08), coleções da Fase 1 (exceto leitura).
 - Padrões reutilizados da Fase 1: RLS por papel, auditoria server-side, hooks JSVM inline, exclusão negada (retenção), estados + substituido_por.
