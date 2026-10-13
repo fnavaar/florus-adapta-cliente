@@ -8,9 +8,9 @@
 - teste_humano: aprovado (2026-10-09 13:20, champion: "a Linha e Fonte apareceram como uma caixa de seleção e ficou ótimo. Portanto, está aprovado")
 - verificacao_automatica: passou (revalidação de encerramento 7/7: CA-2-001/002/003, RN-2.004/2.005, emenda dominios 10+4; TDD 11/11; provas API 13/13)
 - aprendizado: capturado:06_notas/aprendizado-continuo/AP-2026-10-09-1345-migrate-um-par-por-arquivo-e-listas-governadas.md
-- ultima_acao: emenda Industrializacao F1-F4 (v0.0.114-116): opcoes selecionaveis preenchem a linha da Cotacao, 4a opcao cliente fornece fragrancia, sugestoes de perfumaria no seletor, texto do alerta corrigido; prova na tela OK
-- proxima_acao: champion retestar (Ctrl+F5): continuar tentativa → salvar sem erro; "Perfume a 20%" 100/15/1000 → escolher opção no alerta → linha preenchida (21,14 ou 11,66); aprovado fecha T-F2-001
-- atualizado_em: 2026-10-13T18:05:00-03:00
+- ultima_acao: correcao v0.0.117 (autorizada pelo champion): servicos de acabamento agora entram no calculo da linha de Industrializacao (estado elevado p/ Cotacao); prova na tela: celofane marca/desmarca muda 21,14<->22,14/un e Total Geral 21.591<->22.591
+- proxima_acao: champion retestar (Ctrl+F5): "Perfume a 20%" 100/15/1000 → Qualidade alta + marcar celofane → 22,14/un e Total Geral 22.591; aprovado fecha T-F2-001
+- atualizado_em: 2026-10-13T21:00:00-03:00
 
 ---
 ## Análise T-F2-001 (resumo para retomada)
