@@ -1,5 +1,5 @@
 # Estado Atual — Adapta Cliente
 
-- ultima_acao: emenda champion 13/10 (v0.0.111): perfume a seco = Perfume Corporal (perfume para cabelo = capilar, nunca perfumaria; na dúvida PERGUNTA) + máscaras na Avaliação (tamanho mL/g automático pela descrição, R$ no custo, un na qtd) — máscaras TRAVADAS por ordem do champion
-- proxima_acao: champion validar a emenda (perfume a seco → alerta; máscaras R$/un/mL/g) — aprovado fecha T-F2-001; depois insumos I1–I4 p/ T-F2-002
-- atualizado_em: 2026-10-13T08:35:00-03:00
+- ultima_acao: debug dos 3 achados do champion (v0.0.112-113): vendedor_id no create (400 do rascunho), gerador de número NaN, exclusão de candidato capilar p/ perfume a seco; data 12/12 provada como restaurada corretamente; 5 registros de prova marcados limpeza-prova
+- proxima_acao: champion retestar (Ctrl+F5): continuar tentativa → Salvar Rascunho sem erro; "Perfume a 20%" → alerta sem "Perfume para Cabelo"; aprovado fecha T-F2-001
+- atualizado_em: 2026-10-13T17:10:00-03:00
