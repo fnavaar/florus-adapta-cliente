@@ -1,34 +1,40 @@
 # Estado atual — Adapta Cliente
 
-- task_id: T-F2-001 (definir fonte oficial, linha piloto e modelar o cadastro governado de produtos — SPEC-2-001, onda 1, prazo 07/10)
+- task_id: T-F2-002 (migrar e reconciliar o catálogo, com higiene de duplicatas — SPEC-2-001, onda 2)
 - champion: Fábio
 - spec: 04_fase-atual/specs/spec-2-001-cadastro-governado.md
-- etapa: concluida
-- autorizacao_implementacao: confirmada (2026-10-02 20:26, "Pode implementar"); emenda das tabelas autorizada em 2026-10-07 ("Sim", após definir limiar 35% abaixo); emenda Linhas e Fontes autorizada em 2026-10-09 ("sugiro que tenha um local para fazer esse tipo de cadastro")
-- teste_humano: aprovado (2026-10-09 13:20, champion: "a Linha e Fonte apareceram como uma caixa de seleção e ficou ótimo. Portanto, está aprovado")
-- verificacao_automatica: passou (revalidação de encerramento 7/7: CA-2-001/002/003, RN-2.004/2.005, emenda dominios 10+4; TDD 11/11; provas API 13/13)
-- aprendizado: capturado:06_notas/aprendizado-continuo/AP-2026-10-09-1345-migrate-um-par-por-arquivo-e-listas-governadas.md
-- ultima_acao: APROVADO pelo champion ("Deu certo... aprovado") do reteste v0.0.117 (servicos de acabamento no calculo da Industrializacao); emendas v0.0.96-117 encerradas; T-F2-001 100% fechada
-- proxima_acao: champion responder I1-I4 (fonte oficial, linha piloto, responsavel, periodicidade) para abrir a T-F2-002 — exige novo pedido do champion (gate do fluxo)
-- atualizado_em: 2026-10-13T21:10:00-03:00
+- etapa: aguardando_teste_humano
+- autorizacao_implementacao: confirmada (2026-10-14 08:12, "Pode implementar este plano"); decisões I1–I4 registradas (fonte=Tabela jan-2025; TODAS as linhas de uma vez — emenda AC-010; responsável=Fábio; vigência por item com padrão 31/12/2026)
+- teste_humano: T-F2-001 aprovada ("Deu certo... aprovado", 13/10); T-F2-002 pendente (Catálogo com 104 itens)
+- verificacao_automatica: passou (import 104/104; reconciliação item a item 104/104 zero divergências; CP-F2-002 SKU dup 400; CP-F2-003 fonte divergente p/ reconciliação; RLS vendedor 400/104; DELETE 403; auditoria criar/negar)
+- aprendizado: pendente (capturar ao fechar a task)
+- ultima_acao: T-F2-002 implementada: 104 itens migrados e aprovados, reconciliacao 104/104 zero divergencias, provas CP-F2-002/003 + RLS + retencao OK, relatorio em 05_entregas/T-F2-002-reconciliacao-migracao.md
+- proxima_acao: champion testar o Catálogo (Ctrl+F5): 104 itens, filtro por linha, consulta como vendedor; aprovado fecha T-F2-002
+- atualizado_em: 2026-10-14T08:35:00-03:00
+
+---
+## Decisões do champion (T-F2-002)
+- I1 fonte oficial: Tabela jan-2025 (a planilha que alimenta a Cotação)
+- I2 EMENDA AC-010: migrar TODAS as linhas de uma vez ("não vejo sentido em fazer isso em fases") — fim do conceito de linha piloto
+- I3 responsável por produto/preço: Fábio (admin)
+- I4 periodicidade: anual como padrão, mas vigência por item manda — padrão 31/12/2026, editável item a item
+- Industrialização e Serviços de Acabamento: parâmetros de custo (não migram como produtos)
 
 ---
 ## Análise T-F2-001 (resumo para retomada)
 - Critérios: CA-2-001 (cadastro gera produto_id único com estado), CA-2-002 (campo mínimo ausente → pendente_aprovacao com pendência nomeada, nunca visível ao vendedor), CA-2-003 (sem fonte/vigência vencida → pendência explícita, última versão aprovada mantida).
 - Recorte entregue: migration 0015 criando coleção `produtos` (produto_id, nome, linha, SKU, unidade, densidade opcional, preco_kg, lote_minimo, taxas, fonte, vigência, status rascunho/pendente_aprovacao/aprovado/substituido, versao, substituido_por, responsável) com RLS (vendedor lê só aprovados; gestor/admin tudo; exclusão bloqueada) + hook de auditoria/validação + tela de cadastro/consulta + TDD CP-F2-001.
 - Emenda "Linhas e Fontes" (v0.0.101–104): coleção dominios (migration 0016) + semente (0017: 10 linhas jan-2025 + 4 fontes), hook validacao_dominios, tela ListaDominios (incluir/alterar/desativar), Linha/Fonte como Select no Catálogo.
-- Insumos embutidos que o champion responde DENTRO da task (não travam o início): (I1) fonte oficial do catálogo — ERP × Excel controlado × cadastro governado; (I2) linha/produto piloto a migrar; (I3) responsável por produto/preço; (I4) periodicidade de atualização.
 - Não alterar: Cotação (trava 16/09), campos travados do pedido (trava 26/08), coleções da Fase 1 (exceto leitura).
 - Padrões reutilizados da Fase 1: RLS por papel, auditoria server-side, hooks JSVM inline, exclusão negada (retenção), estados + substituido_por.
 
 ---
 ## Histórico — T-F1-012 (concluída em 2026-09-29)
-- implementada v0.0.88–89; aprovada pelo champion ("Fiz isso e o resultado foi exatamente como você disse"); emenda toast 12s v0.0.90; D1/D2 aplicadas ao relatório em v0.0.91 (seção "Meta e fórmula de acurácia", relatório v1.1) — teste humano pendente.
+- implementada v0.0.88–89; aprovada pelo champion ("Fiz isso e o resultado foi exatamente como você disse"); emenda toast 12s v0.0.90; D1/D2 aplicadas ao relatório em v0.0.91 (seção "Meta e fórmula de acurácia", relatório v1.1).
 
 ---
 ## Histórico — T-F1-009 (concluída em 2026-09-29)
-- implementada v0.0.79–80; debugs v0.0.81–82; emendas v0.0.83–87; prova do consultor 01/10 (11/11 PASS, evidências em 05_entregas/T-F1-009-operacao-rollback-evidencias.md).
-- aprendizado: capturado:06_notas/aprendizado-continuo/ (AP-2026-10-09 migrate 1 par up/down por arquivo; typo impossível via lista governada em vez de validação de entrada)
+- implementada v0.0.79–80; debugs v0.0.81–82; emendas v0.0.83–87; prova do consultor 01/10 (11/11 PASS).
 
 ---
 ## Análise T-F1-011 (resumo para retomada)
@@ -44,7 +50,7 @@
 
 ---
 ## Histórico — T-F1-008 (concluída em 2026-09-25)
-- implementada em v0.0.63; debugs/emendas v0.0.64–v0.0.73; aprendizado:AP-2026-09-25-0940 + AP-2026-09-25-0941.
+- implementada v0.0.63; debugs/emendas v0.0.64–v0.0.73; aprendizado:AP-2026-09-25-0940 + AP-2026-09-25-0941.
 
 ---
 ## Histórico — T-F1-007 (concluída em 2026-09-24)
