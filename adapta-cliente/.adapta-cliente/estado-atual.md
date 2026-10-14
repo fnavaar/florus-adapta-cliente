@@ -5,12 +5,12 @@
 - spec: 04_fase-atual/specs/spec-2-001-cadastro-governado.md
 - etapa: aguardando_teste_humano
 - autorizacao_implementacao: confirmada (2026-10-14 08:12, "Pode implementar este plano"); decisões I1–I4 registradas (fonte=Tabela jan-2025; TODAS as linhas de uma vez — emenda AC-010; responsável=Fábio; vigência por item com padrão 31/12/2026)
-- teste_humano: T-F2-001 aprovada ("Deu certo... aprovado", 13/10); T-F2-002 pendente (Catálogo com 104 itens)
-- verificacao_automatica: passou (import 104/104; reconciliação item a item 104/104 zero divergências; CP-F2-002 SKU dup 400; CP-F2-003 fonte divergente p/ reconciliação; RLS vendedor 400/104; DELETE 403; auditoria criar/negar)
+- teste_humano: T-F2-001 aprovada ("Deu certo... aprovado", 13/10); T-F2-002 pendente (Catálogo com 104 itens + reteste da sugestão v0.0.118)
+- verificacao_automatica: passou (import 104/104; reconciliação 104/104 zero divergências; CP-F2-002 SKU dup 400; CP-F2-003 fonte divergente p/ reconciliação; RLS vendedor 400/104; DELETE 403; auditoria criar/negar; debug v0.0.118 prova na tela: sugestão = linha = R$ 10,83)
 - aprendizado: pendente (capturar ao fechar a task)
-- ultima_acao: T-F2-002 implementada: 104 itens migrados e aprovados, reconciliacao 104/104 zero divergencias, provas CP-F2-002/003 + RLS + retencao OK, relatorio em 05_entregas/T-F2-002-reconciliacao-migracao.md
-- proxima_acao: champion testar o Catálogo (Ctrl+F5): 104 itens, filtro por linha, consulta como vendedor; aprovado fecha T-F2-002
-- atualizado_em: 2026-10-14T08:35:00-03:00
+- ultima_acao: debug v0.0.118 (autorizado pelo champion): sugestao da Cotacao mostrava custo sem mao-de-obra (6,83 vs 10,83 na linha) — sugestao agora usa a mesma formula da linha; prova na tela OK; pedido 20261014-0001 do champion correto
+- proxima_acao: champion retestar a sugestao (Ctrl+F5) e testar o Catalogo (104 itens) — aprovando ambos fecha T-F2-002
+- atualizado_em: 2026-10-14T17:20:00-03:00
 
 ---
 ## Decisões do champion (T-F2-002)
