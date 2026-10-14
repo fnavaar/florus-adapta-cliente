@@ -8,9 +8,9 @@
 - teste_humano: aprovado (2026-10-09 13:20, champion: "a Linha e Fonte apareceram como uma caixa de seleção e ficou ótimo. Portanto, está aprovado")
 - verificacao_automatica: passou (revalidação de encerramento 7/7: CA-2-001/002/003, RN-2.004/2.005, emenda dominios 10+4; TDD 11/11; provas API 13/13)
 - aprendizado: capturado:06_notas/aprendizado-continuo/AP-2026-10-09-1345-migrate-um-par-por-arquivo-e-listas-governadas.md
-- ultima_acao: correcao v0.0.117 (autorizada pelo champion): servicos de acabamento agora entram no calculo da linha de Industrializacao (estado elevado p/ Cotacao); prova na tela: celofane marca/desmarca muda 21,14<->22,14/un e Total Geral 21.591<->22.591
-- proxima_acao: champion retestar (Ctrl+F5): "Perfume a 20%" 100/15/1000 → Qualidade alta + marcar celofane → 22,14/un e Total Geral 22.591; aprovado fecha T-F2-001
-- atualizado_em: 2026-10-13T21:00:00-03:00
+- ultima_acao: APROVADO pelo champion ("Deu certo... aprovado") do reteste v0.0.117 (servicos de acabamento no calculo da Industrializacao); emendas v0.0.96-117 encerradas; T-F2-001 100% fechada
+- proxima_acao: champion responder I1-I4 (fonte oficial, linha piloto, responsavel, periodicidade) para abrir a T-F2-002 — exige novo pedido do champion (gate do fluxo)
+- atualizado_em: 2026-10-13T21:10:00-03:00
 
 ---
 ## Análise T-F2-001 (resumo para retomada)
@@ -44,7 +44,7 @@
 
 ---
 ## Histórico — T-F1-008 (concluída em 2026-09-25)
-- implementada v0.0.63; debugs/emendas v0.0.64–v0.0.73; aprendizado:AP-2026-09-25-0940 + AP-2026-09-25-0941.
+- implementada em v0.0.63; debugs/emendas v0.0.64–v0.0.73; aprendizado:AP-2026-09-25-0940 + AP-2026-09-25-0941.
 
 ---
 ## Histórico — T-F1-007 (concluída em 2026-09-24)
