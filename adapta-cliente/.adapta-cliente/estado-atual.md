@@ -3,14 +3,14 @@
 - task_id: T-F2-002 (migrar e reconciliar o catálogo, com higiene de duplicatas — SPEC-2-001, onda 2)
 - champion: Fábio
 - spec: 04_fase-atual/specs/spec-2-001-cadastro-governado.md
-- etapa: aguardando_teste_humano
+- etapa: concluida
 - autorizacao_implementacao: confirmada (2026-10-14 08:12, "Pode implementar este plano"); decisões I1–I4 registradas (fonte=Tabela jan-2025; TODAS as linhas de uma vez — emenda AC-010; responsável=Fábio; vigência por item com padrão 31/12/2026)
-- teste_humano: T-F2-001 aprovada ("Deu certo... aprovado", 13/10); T-F2-002 pendente (reteste do Catálogo corrigido v0.0.120 + pedido 0002 com sugestão correta v0.0.118 e ID real da industrialização v0.0.121)
-- verificacao_automatica: passou (migração v2 104/104 reconciliada zero divergências; ID/SKU 100% numéricos e únicos; CP-F2-002 SKU dup 400; RLS vendedor 400/104; DELETE 403; auditoria criar/negar; prova na tela: 104 botões Editar + nomes/linhas corretos + linha industrializada com ID 13650)
-- aprendizado: pendente (capturar ao fechar a task)
-- ultima_acao: ID real da tabela na linha de Industrializacao (v0.0.121): fim do IND-Premium, linha mostra 13650/13651/13652 (MO do tipo); prova na tela pedido 0002
-- proxima_acao: champion retestar (Ctrl+F5) o Catalogo e o pedido 0002 — aprovado fecha T-F2-002
-- atualizado_em: 2026-10-14T22:20:00-03:00
+- teste_humano: aprovado (2026-10-14 21:57, "Testei o ID de industrialização e funcionou. Também testei o Catálogo e ele está correto. Pode continuar.")
+- verificacao_automatica: passou (revalidação de encerramento 6/6: CA-2-006 reconciliação 104/104 refeta; CA-2-005 SKU dup 400 + trilha 103/103; RLS vendedor 104/104 + create 400; DELETE 403; zero lote ausente)
+- aprendizado: capturado:06_notas/aprendizado-continuo/AP-2026-10-14-2230-migracao-em-lote-rate-limit-e-id-da-fonte.md
+- ultima_acao: T-F2-002 concluída — revalidação 6/6, fase.md/STATUS.md/changelog atualizados (2/8, 25%)
+- proxima_acao: abrir T-F2-003 (composição, conversão e cálculo de lote — SPEC-2-002) quando o champion pedir
+- atualizado_em: 2026-10-14T22:35:00-03:00
 
 ---
 ## Decisões do champion (T-F2-002)
