@@ -5,12 +5,12 @@
 - spec: 04_fase-atual/specs/spec-2-001-cadastro-governado.md
 - etapa: aguardando_teste_humano
 - autorizacao_implementacao: confirmada (2026-10-14 08:12, "Pode implementar este plano"); decisões I1–I4 registradas (fonte=Tabela jan-2025; TODAS as linhas de uma vez — emenda AC-010; responsável=Fábio; vigência por item com padrão 31/12/2026)
-- teste_humano: T-F2-001 aprovada ("Deu certo... aprovado", 13/10); T-F2-002 pendente (Catálogo com 104 itens + reteste da sugestão v0.0.118)
-- verificacao_automatica: passou (import 104/104; reconciliação 104/104 zero divergências; CP-F2-002 SKU dup 400; CP-F2-003 fonte divergente p/ reconciliação; RLS vendedor 400/104; DELETE 403; auditoria criar/negar; debug v0.0.118 prova na tela: sugestão = linha = R$ 10,83)
+- teste_humano: T-F2-001 aprovada ("Deu certo... aprovado", 13/10); T-F2-002 pendente (reteste do Catálogo corrigido v0.0.120)
+- verificacao_automatica: passou (migração v2 104/104 reconciliada zero divergências; ID/SKU 100% numéricos e únicos; CP-F2-002 SKU dup 400; RLS vendedor 400/104; DELETE 403; auditoria criar/negar; prova na tela: 104 botões Editar + nomes/linhas corretos)
 - aprendizado: pendente (capturar ao fechar a task)
-- ultima_acao: debug v0.0.118 (autorizado pelo champion): sugestao da Cotacao mostrava custo sem mao-de-obra (6,83 vs 10,83 na linha) — sugestao agora usa a mesma formula da linha; prova na tela OK; pedido 20261014-0001 do champion correto
-- proxima_acao: champion retestar a sugestao (Ctrl+F5) e testar o Catalogo (104 itens) — aprovando ambos fecha T-F2-002
-- atualizado_em: 2026-10-14T17:20:00-03:00
+- ultima_acao: correcoes das consideracoes do champion (v0.0.119-120): ID/SKU numericos, botao Editar em item vigente (motivo >=10, auditoria), nomes originais (Hidratante Popular/Standard/Premium), linhas realocadas (fim de Outros); migracao v2 104/104 reconciliada
+- proxima_acao: champion retestar o Catalogo (Ctrl+F5) — aprovado fecha T-F2-002
+- atualizado_em: 2026-10-14T21:40:00-03:00
 
 ---
 ## Decisões do champion (T-F2-002)
@@ -19,6 +19,7 @@
 - I3 responsável por produto/preço: Fábio (admin)
 - I4 periodicidade: anual como padrão, mas vigência por item manda — padrão 31/12/2026, editável item a item
 - Industrialização e Serviços de Acabamento: parâmetros de custo (não migram como produtos)
+- Considerações 14/10 (21:00): ID/SKU só números (máscara separadora num passo futuro); botão Editar nos itens vigentes; nomes como na tabela original; categoria Outros extinta (11 itens realocados)
 
 ---
 ## Análise T-F2-001 (resumo para retomada)
