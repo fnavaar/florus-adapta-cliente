@@ -4,28 +4,23 @@
 - champion: Fábio
 - spec: 04_fase-atual/specs/spec-2-002-composicao-lote.md
 - etapa: aguardando_teste_humano
-- autorizacao_implementacao: confirmada (2026-10-15 06:46, formulário "Pode implementar")
+- autorizacao_implementacao: confirmada (2026-10-15 06:46, formulário "Pode implementar"); emenda densidade autorizada 07:01 ("Não precisa de densidade... considere g e mL iguais")
 - teste_humano: pendente
-- verificacao_automatica: passou (provas API 7/7: pedido_do_cliente 250kg/2500un; abaixo do mínimo 60kg/6000un + alerta; exceção sem motivo 400 / com motivo 200 auditada; nao_calculavel nomeado; RLS; DELETE 403; auditoria; tela renderiza a seção no pedido 0002)
+- verificacao_automatica: passou (provas API 7/7 com a emenda g=mL: sérum mL sem densidade calcula 10kg; abaixo do mínimo 60kg/6000un + alerta; exceção 400/200 auditada; nao_calculavel; DELETE 403; auditoria)
 - aprendizado: pendente
-- ultima_acao: T-F2-003 implementada (v0.0.122-127): coleção composicao + hook server-side + tela Composicao no formulário
+- ultima_acao: emenda do champion aplicada (v0.0.128-129): densidade não exigida, g e mL iguais (1 mL = 1 g) — fórmula kg = qtd × tamanho ÷ 1000
 - proxima_acao: champion testar a composição no pedido 0002 (Ctrl+F5) — aprovado fecha T-F2-003
-- atualizado_em: 2026-10-15T07:20:00-03:00
+- atualizado_em: 2026-10-15T07:15:00-03:00
 
 ---
 ## Regra de precedência de lote (champion 15/10, RN-2.009)
 - Palavra do champion: "Sugira o maior lote possível que seja mais próximo do que o cliente pediu, desde que o cliente tenha pedido mais que o pedido mínimo. Caso contrário, sugira o pedido mínimo e alerte o vendedor."
 - Operacional: pedido_kg ≥ mínimo_kg → sugere o pedido do cliente (regra_aplicada=pedido_do_cliente); pedido_kg < mínimo → sugere o mínimo em kg + equivalente em un (lote_minimo) + alerta nomeado. Exceção para manter o pedido abaixo do mínimo exige motivo ≥10 (excecao_minimo, auditada).
-- Fórmulas: mL → kg = qtd × tamanho × densidade ÷ 1000; g → kg = qtd × tamanho ÷ 1000. Fórmula visível na linha (CA-2-009).
-- Pendência conhecida: catálogo sem densidade (0/104 itens — coluna não existe na tabela jan-2025); linhas mL ficam nao_calculavel com pendência nomeada até o técnico cadastrar (comportamento da SPEC).
+- EMENDA champion 15/10 07:01: "Não precisa de densidade. Em termos de valor para cálculo, considere g e mL iguais." — fórmula única kg = qtd × tamanho ÷ 1000 (1 mL = 1 g); densidade não é lida nem exigida; pendência densidade_ausente extinta.
 
 ---
 ## Decisões do champion (T-F2-002)
-- I1 fonte oficial: Tabela jan-2025 (a planilha que alimenta a Cotação)
-- I2 EMENDA AC-010: migrar TODAS as linhas de uma vez — fim do conceito de linha piloto
-- I3 responsável por produto/preço: Fábio (admin)
-- I4 periodicidade: anual como padrão, mas vigência por item manda — padrão 31/12/2026, editável
-- Industrialização e Serviços de Acabamento: parâmetros de custo (não migram como produtos)
+- I1 fonte oficial: Tabela jan-2025 · I2 TODAS as linhas de uma vez (emenda AC-010) · I3 responsável = Fábio (admin) · I4 vigência por item, padrão 31/12/2026
 - Considerações 14/10: ID/SKU só números; botão Editar nos itens vigentes; nomes como na tabela original; categoria Outros extinta; ID da linha de Industrialização = ID real da tabela (13650/13651/13652)
 
 ---
