@@ -5,12 +5,12 @@
 - spec: 04_fase-atual/specs/spec-2-001-cadastro-governado.md
 - etapa: aguardando_teste_humano
 - autorizacao_implementacao: confirmada (2026-10-14 08:12, "Pode implementar este plano"); decisões I1–I4 registradas (fonte=Tabela jan-2025; TODAS as linhas de uma vez — emenda AC-010; responsável=Fábio; vigência por item com padrão 31/12/2026)
-- teste_humano: T-F2-001 aprovada ("Deu certo... aprovado", 13/10); T-F2-002 pendente (reteste do Catálogo corrigido v0.0.120)
-- verificacao_automatica: passou (migração v2 104/104 reconciliada zero divergências; ID/SKU 100% numéricos e únicos; CP-F2-002 SKU dup 400; RLS vendedor 400/104; DELETE 403; auditoria criar/negar; prova na tela: 104 botões Editar + nomes/linhas corretos)
+- teste_humano: T-F2-001 aprovada ("Deu certo... aprovado", 13/10); T-F2-002 pendente (reteste do Catálogo corrigido v0.0.120 + pedido 0002 com sugestão correta v0.0.118 e ID real da industrialização v0.0.121)
+- verificacao_automatica: passou (migração v2 104/104 reconciliada zero divergências; ID/SKU 100% numéricos e únicos; CP-F2-002 SKU dup 400; RLS vendedor 400/104; DELETE 403; auditoria criar/negar; prova na tela: 104 botões Editar + nomes/linhas corretos + linha industrializada com ID 13650)
 - aprendizado: pendente (capturar ao fechar a task)
-- ultima_acao: correcoes das consideracoes do champion (v0.0.119-120): ID/SKU numericos, botao Editar em item vigente (motivo >=10, auditoria), nomes originais (Hidratante Popular/Standard/Premium), linhas realocadas (fim de Outros); migracao v2 104/104 reconciliada
-- proxima_acao: champion retestar o Catalogo (Ctrl+F5) — aprovado fecha T-F2-002
-- atualizado_em: 2026-10-14T21:40:00-03:00
+- ultima_acao: ID real da tabela na linha de Industrializacao (v0.0.121): fim do IND-Premium, linha mostra 13650/13651/13652 (MO do tipo); prova na tela pedido 0002
+- proxima_acao: champion retestar (Ctrl+F5) o Catalogo e o pedido 0002 — aprovado fecha T-F2-002
+- atualizado_em: 2026-10-14T22:20:00-03:00
 
 ---
 ## Decisões do champion (T-F2-002)
@@ -20,6 +20,7 @@
 - I4 periodicidade: anual como padrão, mas vigência por item manda — padrão 31/12/2026, editável item a item
 - Industrialização e Serviços de Acabamento: parâmetros de custo (não migram como produtos)
 - Considerações 14/10 (21:00): ID/SKU só números (máscara separadora num passo futuro); botão Editar nos itens vigentes; nomes como na tabela original; categoria Outros extinta (11 itens realocados)
+- Considerações 14/10 (22:00): ID da linha de Industrialização = ID real da tabela (MO do tipo: perfume 13650, body splash 13651, aromatizador 13652) — fim do rótulo IND-
 
 ---
 ## Análise T-F2-001 (resumo para retomada)
