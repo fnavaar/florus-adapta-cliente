@@ -4,19 +4,22 @@
 - champion: Fábio
 - spec: 04_fase-atual/specs/spec-2-002-composicao-lote.md
 - etapa: aguardando_teste_humano
-- autorizacao_implementacao: confirmada (2026-10-15 06:46, formulário "Pode implementar"); emenda densidade autorizada 07:01 ("Não precisa de densidade... considere g e mL iguais")
+- autorizacao_implementacao: confirmada (2026-10-15 06:46, "Pode implementar"); emenda densidade 07:01 ("Não precisa de densidade... considere g e mL iguais"); 3 emendas da Cotação/Composição autorizadas 18/10 (formulário: "Aprovar as 3 emendas como descrito")
 - teste_humano: pendente
-- verificacao_automatica: passou (provas API 7/7 com a emenda g=mL: sérum mL sem densidade calcula 10kg; abaixo do mínimo 60kg/6000un + alerta; exceção 400/200 auditada; nao_calculavel; DELETE 403; auditoria)
+- verificacao_automatica: passou (E1 alerta de mínimo na Cotação; E2 seleção da Cotação = vínculo único gravado em produto_id no item da Avaliação, provado via API: hidratante→125231, composição calcula 100kg→sugere 200kg≈2000un; E3 seleção persiste no JSON produtos do pedido; rascunho do champion restaurado ao estado limpo após a prova)
 - aprendizado: pendente
-- ultima_acao: emenda do champion aplicada (v0.0.128-129): densidade não exigida, g e mL iguais (1 mL = 1 g) — fórmula kg = qtd × tamanho ÷ 1000
-- proxima_acao: champion testar a composição no pedido 0002 (Ctrl+F5) — aprovado fecha T-F2-003
-- atualizado_em: 2026-10-15T07:15:00-03:00
+- ultima_acao: 3 emendas autorizadas pelo champion (18/10, formulário) implementadas v0.0.132-133: E1 alerta de lote mínimo na Cotação na seleção; E2 fim do vínculo manual na Composição (usa o produto_id da seleção da Cotação); E3 seleção da Cotação persiste com o pedido
+- proxima_acao: champion testar no pedido 0002 (Ctrl+F5): selecionar hidratante e perfume na Cotação → alertas de mínimo aparecem LÁ; Composição mostra o produto escolhido e calcula sem vínculo manual
+- atualizado_em: 2026-10-18T11:35:00-03:00
 
 ---
 ## Regra de precedência de lote (champion 15/10, RN-2.009)
 - Palavra do champion: "Sugira o maior lote possível que seja mais próximo do que o cliente pediu, desde que o cliente tenha pedido mais que o pedido mínimo. Caso contrário, sugira o pedido mínimo e alerte o vendedor."
 - Operacional: pedido_kg ≥ mínimo_kg → sugere o pedido do cliente (regra_aplicada=pedido_do_cliente); pedido_kg < mínimo → sugere o mínimo em kg + equivalente em un (lote_minimo) + alerta nomeado. Exceção para manter o pedido abaixo do mínimo exige motivo ≥10 (excecao_minimo, auditada).
 - EMENDA champion 15/10 07:01: "Não precisa de densidade. Em termos de valor para cálculo, considere g e mL iguais." — fórmula única kg = qtd × tamanho ÷ 1000 (1 mL = 1 g); densidade não é lida nem exigida; pendência densidade_ausente extinta.
+- E1 (18/10, v0.0.132): o alerta de mínimo também aparece NA COTAÇÃO, na hora da seleção (a Composição continua com o cálculo governado e a exceção auditada).
+- E2 (18/10, v0.0.133): a seleção da Cotação É o vínculo com o catálogo — grava produto_id no item da Avaliação (JSON produtos do pedido); a Composição usa esse campo e NÃO pede vínculo manual (mostra "Selecionado na Cotação · ID ...").
+- E3 (18/10, v0.0.133): a seleção da Cotação PERSISTE — ao reabrir o rascunho, restaura do produto_id.
 
 ---
 ## Decisões do champion (T-F2-002)
@@ -27,8 +30,8 @@
 ## Análise T-F2-001 (resumo para retomada)
 - Critérios: CA-2-001, CA-2-002, CA-2-003. Recorte: migration 0015 (coleção produtos com RLS/trilha/exclusão bloqueada) + hook validacao_produtos + src/lib/produtos.ts + tela CatalogoProdutos + TDD CP-F2-001.
 - Emenda "Linhas e Fontes" (v0.0.101–104): coleção dominios + semente + tela ListaDominios + Select no Catálogo.
-- Não alterar: Cotação (trava 16/09), campos travados do pedido (trava 26/08), coleções da Fase 1 (exceto leitura).
-- Padrões: RLS por papel, auditoria server-side, hooks JSVM inline (TODA a lógica dentro dos callbacks — QA v0.0.122 pegou funções top-level), exclusão negada (retenção), estados + substituido_por.
+- Não alterar: Cotação (trava 16/09 — emendas E1–E3 são autorizadas e só acrescentam alerta/persistência), campos travados do pedido (trava 26/08), coleções da Fase 1 (exceto leitura).
+- Padrões: RLS por papel, auditoria server-side, hooks JSVM inline (TODA a lógica dentro dos callbacks), exclusão negada (retenção), estados + substituido_por.
 
 ---
 ## Histórico — T-F2-002 (concluída em 2026-10-14)
