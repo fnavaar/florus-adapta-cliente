@@ -1,26 +1,26 @@
 # Estado atual — Adapta Cliente
 
-- task_id: T-F2-003 (configurar composição, conversão e cálculo de lote — SPEC-2-002, onda 3)
+- task_id: T-F2-003 (configurar composição, conversão e cálculo de lote — SPEC-2-002, onda 3) — CONCLUÍDA
 - champion: Fábio
 - spec: 04_fase-atual/specs/spec-2-002-composicao-lote.md
-- etapa: aguardando_teste_humano
-- autorizacao_implementacao: confirmada (2026-10-15 06:46, "Pode implementar"); emenda densidade 07:01 ("Não precisa de densidade... considere g e mL iguais"); 3 emendas da Cotação/Composição autorizadas 18/10 (formulário: "Aprovar as 3 emendas como descrito")
-- teste_humano: pendente
-- verificacao_automatica: passou (v0.0.136 provado no browser: formulário carrega sem tela branca e alerta do perfume aparece com texto exato "10 kg x mínimo 100 kg - sugerido 100 kg ~ 1000 un"; hidratante já provado pelo champion)
+- etapa: concluida
+- teste_humano: aprovado (champion 19/10: "Agora funcionou")
+- verificacao_automatica: passou (v0.0.137 provado no browser: formulário sem a seção Composição; Cotação e Salvar intactos)
 - aprendizado: pendente
-- ultima_acao: fix tela branca (relato do champion 19/10 noite): v0.0.135 usava indOp antes da declaração (TDZ) no alerta E1 -> formulário caía em silêncio; corrigido v0.0.136 (E1 calculado após indOp, cobre tabela geral + perfumaria + industrialização 100kg)
-- proxima_acao: champion retestar (Cmd+Shift+R) no pedido 20261018-0004: perfume -> alerta de mínimo; aprovado fecha T-F2-003
-- atualizado_em: 2026-10-19T21:45:00-03:00
+- ultima_acao: DECISÃO do champion (19/10): seção Composição e cálculo de lote EXCLUÍDA do formulário do vendedor — produção não é do vendedor; retomar quando a programação de produção precisar, baseado no pedido de vendas. Implementado v0.0.137
+- proxima_acao: próximo pedido do consultor (T-F2-004, onda 4)
+- atualizado_em: 2026-10-19T21:58:00-03:00
 
 ---
 ## Regra de precedência de lote (champion 15/10, RN-2.009)
 - Palavra do champion: "Sugira o maior lote possível que seja mais próximo do que o cliente pediu, desde que o cliente tenha pedido mais que o pedido mínimo. Caso contrário, sugira o pedido mínimo e alerte o vendedor."
 - Operacional: pedido_kg ≥ mínimo_kg → sugere o pedido do cliente (regra_aplicada=pedido_do_cliente); pedido_kg < mínimo → sugere o mínimo em kg + equivalente em un (lote_minimo) + alerta nomeado. Exceção para manter o pedido abaixo do mínimo exige motivo ≥10 (excecao_minimo, auditada).
-- EMENDA champion 15/10 07:01: "Não precisa de densidade. Em termos de valor para cálculo, considere g e mL iguais." — fórmula única kg = qtd × tamanho ÷ 1000 (1 mL = 1 g); densidade não é lida nem exigida; pendência densidade_ausente extinta.
-- E1 (18/10, v0.0.132): o alerta de mínimo também aparece NA COTAÇÃO, na hora da seleção (a Composição continua com o cálculo governado e a exceção auditada).
-- E2 (18/10, v0.0.133): a seleção da Cotação É o vínculo com o catálogo — grava produto_id no item da Avaliação (JSON produtos do pedido); a Composição usa esse campo e NÃO pede vínculo manual (mostra "Selecionado na Cotação · ID ...").
+- EMENDA champion 15/10 07:01: "Não precisa de densidade. Em termos de valor para cálculo, considere g e mL iguais." — fórmula única kg = qtd × tamanho ÷ 1000 (1 mL = 1 g); densidade não é lida nem exigida.
+- E1 (18/10, v0.0.132): o alerta de mínimo aparece NA COTAÇÃO, na hora da seleção (cobre tabela geral + perfumaria idx pf- + industrialização 100 kg).
+- E2 (18/10, v0.0.133): a seleção da Cotação É o vínculo com o catálogo — grava produto_id no item da Avaliação (JSON produtos do pedido).
 - E3 (18/10, v0.0.133): a seleção da Cotação PERSISTE — ao reabrir o rascunho, restaura do produto_id.
-- FIX (19/10, v0.0.136): a v0.0.135 referenciava indOp antes da declaração (TDZ) no cálculo do E1 — tela branca ao editar qualquer pedido; corrigido (E1 calculado após indOp; cobre tabela geral + perfumaria + industrialização 100 kg). LIÇÃO: QA de build não pega TDZ — só rodando a tela; patch que move código deve conferir a ordem de declaração.
+- FIX (19/10, v0.0.136): a v0.0.135 referenciava indOp antes da declaração (TDZ) no cálculo do E1 — tela branca ao editar qualquer pedido; corrigido. LIÇÃO: QA de build não pega TDZ — só rodando a tela.
+- DECISÃO FINAL (19/10, v0.0.137): seção Composição EXCLUÍDA do formulário do vendedor — produção não é preocupação do vendedor; a informação será útil na programação de produção (estoque/compras); retomar quando necessário, baseado no pedido de vendas. Coleção composicao + hook server-side + alerta E1 na Cotação PERMANECEM (base pronta para a fase de produção).
 
 ---
 ## Decisões do champion (T-F2-002)
@@ -31,7 +31,7 @@
 ## Análise T-F2-001 (resumo para retomada)
 - Critérios: CA-2-001, CA-2-002, CA-2-003. Recorte: migration 0015 (coleção produtos com RLS/trilha/exclusão bloqueada) + hook validacao_produtos + src/lib/produtos.ts + tela CatalogoProdutos + TDD CP-F2-001.
 - Emenda "Linhas e Fontes" (v0.0.101–104): coleção dominios + semente + tela ListaDominios + Select no Catálogo.
-- Não alterar: Cotação (trava 16/09 — emendas E1–E3 são autorizadas e só acrescentam alerta/persistência), campos travados do pedido (trava 26/08), coleções da Fase 1 (exceto leitura).
+- Não alterar: Cotação (trava 16/09 — emendas E1–E3 autorizadas e só acrescentam alerta/persistência), campos travados do pedido (trava 26/08), coleções da Fase 1 (exceto leitura).
 - Padrões: RLS por papel, auditoria server-side, hooks JSVM inline (TODA a lógica dentro dos callbacks), exclusão negada (retenção), estados + substituido_por.
 
 ---
