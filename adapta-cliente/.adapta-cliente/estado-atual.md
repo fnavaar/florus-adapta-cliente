@@ -6,11 +6,11 @@
 - etapa: aguardando_teste_humano
 - autorizacao_implementacao: confirmada (2026-10-15 06:46, "Pode implementar"); emenda densidade 07:01 ("Não precisa de densidade... considere g e mL iguais"); 3 emendas da Cotação/Composição autorizadas 18/10 (formulário: "Aprovar as 3 emendas como descrito")
 - teste_humano: pendente
-- verificacao_automatica: passou (E1 alerta de mínimo na Cotação; E2 seleção da Cotação = vínculo único gravado em produto_id no item da Avaliação, provado via API: hidratante→125231, composição calcula 100kg→sugere 200kg≈2000un; E3 seleção persiste no JSON produtos do pedido; rascunho do champion restaurado ao estado limpo após a prova)
+- verificacao_automatica: passou (v0.0.136 provado no browser: formulário carrega sem tela branca e alerta do perfume aparece com texto exato "10 kg x mínimo 100 kg - sugerido 100 kg ~ 1000 un"; hidratante já provado pelo champion)
 - aprendizado: pendente
-- ultima_acao: 3 emendas autorizadas pelo champion (18/10, formulário) implementadas v0.0.132-133: E1 alerta de lote mínimo na Cotação na seleção; E2 fim do vínculo manual na Composição (usa o produto_id da seleção da Cotação); E3 seleção da Cotação persiste com o pedido
-- proxima_acao: champion testar no pedido 0002 (Ctrl+F5): selecionar hidratante e perfume na Cotação → alertas de mínimo aparecem LÁ; Composição mostra o produto escolhido e calcula sem vínculo manual
-- atualizado_em: 2026-10-18T11:35:00-03:00
+- ultima_acao: fix tela branca (relato do champion 19/10 noite): v0.0.135 usava indOp antes da declaração (TDZ) no alerta E1 -> formulário caía em silêncio; corrigido v0.0.136 (E1 calculado após indOp, cobre tabela geral + perfumaria + industrialização 100kg)
+- proxima_acao: champion retestar (Cmd+Shift+R) no pedido 20261018-0004: perfume -> alerta de mínimo; aprovado fecha T-F2-003
+- atualizado_em: 2026-10-19T21:45:00-03:00
 
 ---
 ## Regra de precedência de lote (champion 15/10, RN-2.009)
@@ -20,6 +20,7 @@
 - E1 (18/10, v0.0.132): o alerta de mínimo também aparece NA COTAÇÃO, na hora da seleção (a Composição continua com o cálculo governado e a exceção auditada).
 - E2 (18/10, v0.0.133): a seleção da Cotação É o vínculo com o catálogo — grava produto_id no item da Avaliação (JSON produtos do pedido); a Composição usa esse campo e NÃO pede vínculo manual (mostra "Selecionado na Cotação · ID ...").
 - E3 (18/10, v0.0.133): a seleção da Cotação PERSISTE — ao reabrir o rascunho, restaura do produto_id.
+- FIX (19/10, v0.0.136): a v0.0.135 referenciava indOp antes da declaração (TDZ) no cálculo do E1 — tela branca ao editar qualquer pedido; corrigido (E1 calculado após indOp; cobre tabela geral + perfumaria + industrialização 100 kg). LIÇÃO: QA de build não pega TDZ — só rodando a tela; patch que move código deve conferir a ordem de declaração.
 
 ---
 ## Decisões do champion (T-F2-002)
