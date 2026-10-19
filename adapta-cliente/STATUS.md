@@ -1,6 +1,6 @@
 # STATUS — Projeto Florus Brasil — Processo Comercial
 
-> **Atualizado em:** 2026-10-14 · **Por:** consultoria Adapta
+> **Atualizado em:** 2026-10-19 · **Por:** consultoria Adapta
 
 **Repo do cliente:** https://github.com/fnavaar/florus-adapta-cliente
 
@@ -8,8 +8,8 @@
 
 - **Fase atual:** 2 — Cadastro governado e calculadora de viabilidade · liberada em 2026-10-02 pela consultoria, com autorização explícita de Felipe Navaar.
 - **Objetivo:** governar catálogo, composição/lote, investimento/preço e auditoria da calculadora.
-- **Tasks:** 2/8 (25%) — T-F2-001 e T-F2-002 concluídas e aprovadas pelo champion (2026-10-09 e 2026-10-14).
-- **Próxima task:** T-F2-003 — configurar composição, conversão e cálculo de lote (SPEC-2-002, onda 3). Insumo embutido: fórmulas de conversão/densidade por produto e precedência entre 1.000 unidades/SKU × mínimo em kg. IDs das bases de industrialização (13654/13655/13656) já carregados no JSON para uso na composição.
+- **Tasks:** 4/8 (50%) — T-F2-001, T-F2-002, T-F2-003 e T-F2-004 concluídas e aprovadas pelo champion (09/10, 14/10 e 19/10; T-F2-003 com decisão de excluir a seção Composição do formulário do vendedor — produção não é do vendedor).
+- **Próxima task:** T-F2-005 — configurar cálculo de investimento, componentes e comparação com política (SPEC-2-003, onda 5). Insumo embutido: componentes e regras de custo, política de preço/piso e semântica dos limiares. Insumo da T-F2-004: UPDATE (ex.: exceção) ainda não gera evento na auditoria central — cobrir na T-F2-007.
 - **Fase 1:** encerrada, 12/12 tasks aceitas; unidade preservada em `05_entregas/fase-1/`.
 - Executar uma task por vez com prova e teste humano do champion antes de avançar.
 

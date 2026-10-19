@@ -1,16 +1,16 @@
 # Estado atual — Adapta Cliente
 
-- task_id: T-F2-004 (exercitar mínimo, precedência, exceções e linhas não calculáveis — SPEC-2-002, onda 4)
+- task_id: T-F2-004 (exercitar mínimo, precedência, exceções e linhas não calculáveis — SPEC-2-002, onda 4) — CONCLUÍDA
 - champion: Fábio
 - spec: 04_fase-atual/specs/spec-2-002-composicao-lote.md
-- etapa: aguardando_teste_humano
+- etapa: concluida
 - autorizacao_implementacao: confirmada (2026-10-19, formulário "Pode implementar" após o relatório de análise)
-- teste_humano: pendente (roteiro entregue 19/10: champion reproduz o alerta na Cotação)
-- verificacao_automatica: passou (TDD REGRESSAO 24/24 PASS — CP-F2-005/006 contra o motor real v0.0.137; script scripts/tf2004-tdd.py; relatorio 05_entregas/T-F2-004-cenarios.md)
-- aprendizado: pendente
-- ultima_acao: T-F2-004 implementada/exercida: 24/24 provas PASS (precedencia exibida, excecao auditada, isolamento, retencao 403, auditoria); linhas de prova marcadas LIMPEZA-PROVA-tf2004; nenhuma mudanca de codigo necessaria (motor v0.0.137 correto); ACHADO: edicao ainda sem evento na auditoria CENTRAL — escopo T-F2-007
-- proxima_acao: aguardar teste humano do champion (alerta na Cotacao) e aceite para concluir
-- atualizado_em: 2026-10-19T18:40:00-03:00
+- teste_humano: aprovado (champion 19/10: "Funcionou — pode concluir a T-F2-004")
+- verificacao_automatica: passou (TDD REGRESSAO 24/24 PASS re-executado na revalidação — CP-F2-005/006 contra o motor real v0.0.137; script scripts/tf2004-tdd.py; relatorio 05_entregas/T-F2-004-cenarios.md)
+- aprendizado: capturado:06_notas/aprendizado-continuo/AP-2026-10-19-1850-roteiro-teste-pelo-conteudo-real.md
+- ultima_acao: T-F2-004 concluida — revalidacao independente (TDD re-executado 24/24 PASS) + aceite do champion; fase.md [x] (003 e 004), STATUS.md 4/8 (50%), changelog v5; push e37cc87 verificado
+- proxima_acao: proximo pedido do consultor (T-F2-005, onda 5)
+- atualizado_em: 2026-10-19T18:55:00-03:00
 
 ---
 ## Decisões do champion (T-F2-002)
