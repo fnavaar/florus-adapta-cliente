@@ -8,8 +8,8 @@
 
 - **Fase atual:** 2 — Cadastro governado e calculadora de viabilidade · liberada em 2026-10-02 pela consultoria, com autorização explícita de Felipe Navaar.
 - **Objetivo:** governar catálogo, composição/lote, investimento/preço e auditoria da calculadora.
-- **Tasks:** 5/8 (62,5%) — T-F2-001 a T-F2-005 concluídas e aprovadas pelo champion (09/10, 14/10, 19/10 e 20/10; T-F2-003 com decisão de excluir a seção Composição do formulário do vendedor — produção não é do vendedor; T-F2-005 com correção do champion: Anvisa 1× por produto, e emenda: Cotação grava MO/Anvisa no item).
-- **Próxima task:** T-F2-006 — exercitar duas aprovações, exceções e rollback de preço (SPEC-2-003, onda 6, após T-F2-005). Insumo embutido: matriz de alçadas de preço (quem aprova o quê). Insumo da T-F2-004: UPDATE (ex.: exceção) ainda não gera evento na auditoria central — cobrir na T-F2-007. Política de faturamento mínimo (flexível por julgamento do vendedor em projeto estratégico): decisão do champion 20/10 — pode ser criada depois; a comparação do investimento fica em revisao_de_preco até a política ser cadastrada.
+- **Tasks:** 5/8 (62,5%) — T-F2-001 a T-F2-005 concluídas e aprovadas pelo champion (09/10 a 20/10); T-F2-006 implementada (v0.0.143, trilha de preço com duas aprovações, exceções e rollback; TDD 22/22; aguardando teste do champion).
+- **Em andamento:** T-F2-006 (SPEC-2-003, onda 6) — trilha de preço implementada com as decisões do champion (20/10): D1 gestor+admin (2ª de pessoa distinta do outro papel) · D2 duas sempre · D3 exceção proposta pelo gestor, 2ª só admin · D4 rollback gestor/admin com motivo · D5 sem vigência extra. A 2ª aprovação atualiza o preço com evento na auditoria central (cobre o achado da T-F2-004). Próxima: T-F2-007 (auditoria, matriz de alçadas e fail-closed nas superfícies da Fase 2). Política de faturamento mínimo: decisão do champion 20/10 — pode ser criada depois; comparação fica em revisao_de_preco até lá.
 - **Fase 1:** encerrada, 12/12 tasks aceitas; unidade preservada em `05_entregas/fase-1/`.
 - Executar uma task por vez com prova e teste humano do champion antes de avançar.
 
