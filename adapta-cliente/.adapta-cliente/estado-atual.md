@@ -1,16 +1,24 @@
 # Estado atual — Adapta Cliente
 
-- task_id: T-F2-004 (exercitar mínimo, precedência, exceções e linhas não calculáveis — SPEC-2-002, onda 4) — CONCLUÍDA
+- task_id: T-F2-005 (configurar cálculo de investimento, componentes e comparação com política — SPEC-2-003, onda 5)
 - champion: Fábio
-- spec: 04_fase-atual/specs/spec-2-002-composicao-lote.md
-- etapa: concluida
-- autorizacao_implementacao: confirmada (2026-10-19, formulário "Pode implementar" após o relatório de análise)
-- teste_humano: aprovado (champion 19/10: "Funcionou — pode concluir a T-F2-004")
-- verificacao_automatica: passou (TDD REGRESSAO 24/24 PASS re-executado na revalidação — CP-F2-005/006 contra o motor real v0.0.137; script scripts/tf2004-tdd.py; relatorio 05_entregas/T-F2-004-cenarios.md)
+- spec: 04_fase-atual/specs/spec-2-003-investimento-preco.md
+- etapa: aguardando_teste_humano
+- autorizacao_implementacao: confirmada (2026-10-19, formulário "Pode implementar" com insumos I5/I6/I7 fechados pelo champion)
+- teste_humano: reteste liberado (roteiro 20/10: Cotação → selecionar produto → Salvar Rascunho → Detalhe → Calcular investimento → conferir MO/Anvisa/total)
+- verificacao_automatica: passou (TDD GREEN CP-F2-007 20/20 PASS contra o motor real v0.0.142 com Anvisa 1x por produto; script scripts/tf2005-tdd.py; relatorio 05_entregas/T-F2-005-investimento.md)
 - aprendizado: capturado:06_notas/aprendizado-continuo/AP-2026-10-19-1850-roteiro-teste-pelo-conteudo-real.md
-- ultima_acao: T-F2-004 concluida — revalidacao independente (TDD re-executado 24/24 PASS) + aceite do champion; fase.md [x] (003 e 004), STATUS.md 4/8 (50%), changelog v5; push e37cc87 verificado
-- proxima_acao: proximo pedido do consultor (T-F2-005, onda 5)
-- atualizado_em: 2026-10-19T18:55:00-03:00
+- ultima_acao: v0.0.141 (Anvisa 1x por produto no hook, correcao do champion; TDD 20/20 com numeros corretos 28.300/2.042,50/30.342,50) + v0.0.142 (emenda: Cotacao grava MO e Anvisa no item ao confirmar selecao; provado na tela: rascunho 0002 gravou MO 4 e anvisa 450); rascunhos de prova 0001/0002 marcados LIMPEZA-PROVA
+- proxima_acao: reteste do champion (jornada Cotação → salvar → Detalhe → Calcular) + aceite para concluir a T-F2-005
+- atualizado_em: 2026-10-20T16:05:00-03:00
+
+---
+## Insumos do champion (T-F2-005)
+- I5 componentes = formulação (custo da Cotação) + Anvisa + serviços adicionais da tabela jan-2025 (Lacre 0,60 · Montagem caixa 2,50 · Rotulagem 0,60 · Celofane 1,00), cada um com nome, valor e impacto — transparência para vendedor e cliente
+- ANVISA = UMA VEZ POR PRODUTO (correção do champion 20/10): R$ 450,00 por produto na tabela jan-2025, nunca diluído por quantidade; serviços adicionais SIM por unidade
+- Emenda 20/10 (autorizada): a Cotação grava mao_de_obra e anvisa (por produto) no item ao confirmar a seleção (v0.0.142, provado na tela — rascunho 0002 gravou MO '4' e anvisa '450')
+- I6 ainda SEM política cadastrada → comparação nasce em revisao_de_preco
+- I7 responsável por componentes e política = Fábio (admin)
 
 ---
 ## Decisões do champion (T-F2-002)
@@ -31,8 +39,12 @@
 - Padrões reutilizados da Fase 1: RLS por papel, auditoria server-side, hooks JSVM inline, exclusão negada (retenção), estados + substituido_por.
 
 ---
+## Histórico — T-F2-004 (concluída em 2026-10-19)
+- TDD REGRESSÃO 24/24 PASS contra o motor v0.0.137 + aceite do champion ("Funcionou — pode concluir"); relatório 05_entregas/T-F2-004-cenarios.md; achado p/ T-F2-007: UPDATE sem evento na auditoria central.
+
+---
 ## Histórico — T-F1-012 (concluída em 2026-09-29)
-- implementada v0.0.88–89; aprovada pelo champion ("Fiz isso e o resultado foi exatamente como você disse"); emenda toast 12s v0.0.90; D1/D2 aplicadas ao relatório em v0.0.91 (seção "Meta e fórmula de acurácia", relatório v1.1).
+- implementada v0.0.88–89; aprovada pelo champion; emenda toast 12s v0.0.90; D1/D2 aplicadas ao relatório em v0.0.91.
 
 ---
 ## Histórico — T-F1-009 (concluída em 2026-09-29)
