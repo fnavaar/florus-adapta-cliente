@@ -3,14 +3,14 @@
 - task_id: T-F2-005 (configurar cálculo de investimento, componentes e comparação com política — SPEC-2-003, onda 5)
 - champion: Fábio
 - spec: 04_fase-atual/specs/spec-2-003-investimento-preco.md
-- etapa: aguardando_teste_humano
+- etapa: concluida
 - autorizacao_implementacao: confirmada (2026-10-19, formulário "Pode implementar" com insumos I5/I6/I7 fechados pelo champion)
-- teste_humano: reteste liberado (roteiro 20/10: Cotação → selecionar produto → Salvar Rascunho → Detalhe → Calcular investimento → conferir MO/Anvisa/total)
-- verificacao_automatica: passou (TDD GREEN CP-F2-007 20/20 PASS contra o motor real v0.0.142 com Anvisa 1x por produto; script scripts/tf2005-tdd.py; relatorio 05_entregas/T-F2-005-investimento.md)
+- teste_humano: aprovado (2026-10-20, formulário: "Aprovar a T-F2-005" após conferência na tela — total 19.628,00 = subtotal da Cotação; Anvisa 1×; MO correta)
+- verificacao_automatica: passou (revalidação de encerramento do zero: TDD 20/20 PASS contra o motor v0.0.142 com Anvisa 1x por produto; script scripts/tf2005-tdd.py; relatorio 05_entregas/T-F2-005-investimento.md)
 - aprendizado: capturado:06_notas/aprendizado-continuo/AP-2026-10-19-1850-roteiro-teste-pelo-conteudo-real.md
-- ultima_acao: v0.0.141 (Anvisa 1x por produto no hook, correcao do champion; TDD 20/20 com numeros corretos 28.300/2.042,50/30.342,50) + v0.0.142 (emenda: Cotacao grava MO e Anvisa no item ao confirmar selecao; provado na tela: rascunho 0002 gravou MO 4 e anvisa 450); rascunhos de prova 0001/0002 marcados LIMPEZA-PROVA
-- proxima_acao: reteste do champion (jornada Cotação → salvar → Detalhe → Calcular) + aceite para concluir a T-F2-005
-- atualizado_em: 2026-10-20T16:05:00-03:00
+- ultima_acao: fechamento formal — revalidação 20/20 do zero; fase.md [x]; STATUS.md 5/8 (62,5%); changelog v12; decisão do champion: política de faturamento mínimo pode ser criada depois (flexível por julgamento do vendedor em projeto estratégico); comparação fica em revisao_de_preco até lá
+- proxima_acao: aguardar ordem do champion para abrir a T-F2-006 (duas aprovações, exceções e rollback de preço)
+- atualizado_em: 2026-10-20T19:40:00-03:00
 
 ---
 ## Insumos do champion (T-F2-005)
