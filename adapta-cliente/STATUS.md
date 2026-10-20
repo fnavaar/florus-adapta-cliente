@@ -1,6 +1,6 @@
 # STATUS — Projeto Florus Brasil — Processo Comercial
 
-> **Atualizado em:** 2026-10-19 · **Por:** consultoria Adapta
+> **Atualizado em:** 2026-10-20 · **Por:** consultoria Adapta
 
 **Repo do cliente:** https://github.com/fnavaar/florus-adapta-cliente
 
@@ -8,8 +8,8 @@
 
 - **Fase atual:** 2 — Cadastro governado e calculadora de viabilidade · liberada em 2026-10-02 pela consultoria, com autorização explícita de Felipe Navaar.
 - **Objetivo:** governar catálogo, composição/lote, investimento/preço e auditoria da calculadora.
-- **Tasks:** 4/8 (50%) — T-F2-001, T-F2-002, T-F2-003 e T-F2-004 concluídas e aprovadas pelo champion (09/10, 14/10 e 19/10; T-F2-003 com decisão de excluir a seção Composição do formulário do vendedor — produção não é do vendedor).
-- **Próxima task:** T-F2-005 — configurar cálculo de investimento, componentes e comparação com política (SPEC-2-003, onda 5). Insumo embutido: componentes e regras de custo, política de preço/piso e semântica dos limiares. Insumo da T-F2-004: UPDATE (ex.: exceção) ainda não gera evento na auditoria central — cobrir na T-F2-007.
+- **Tasks:** 5/8 (62,5%) — T-F2-001 a T-F2-005 concluídas e aprovadas pelo champion (09/10, 14/10, 19/10 e 20/10; T-F2-003 com decisão de excluir a seção Composição do formulário do vendedor — produção não é do vendedor; T-F2-005 com correção do champion: Anvisa 1× por produto, e emenda: Cotação grava MO/Anvisa no item).
+- **Próxima task:** T-F2-006 — exercitar duas aprovações, exceções e rollback de preço (SPEC-2-003, onda 6, após T-F2-005). Insumo embutido: matriz de alçadas de preço (quem aprova o quê). Insumo da T-F2-004: UPDATE (ex.: exceção) ainda não gera evento na auditoria central — cobrir na T-F2-007. Política de faturamento mínimo (flexível por julgamento do vendedor em projeto estratégico): decisão do champion 20/10 — pode ser criada depois; a comparação do investimento fica em revisao_de_preco até a política ser cadastrada.
 - **Fase 1:** encerrada, 12/12 tasks aceitas; unidade preservada em `05_entregas/fase-1/`.
 - Executar uma task por vez com prova e teste humano do champion antes de avançar.
 
