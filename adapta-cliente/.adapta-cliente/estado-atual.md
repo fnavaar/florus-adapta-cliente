@@ -1,16 +1,16 @@
 # Estado atual — Adapta Cliente
 
-- task_id: T-F2-005 (configurar cálculo de investimento, componentes e comparação com política — SPEC-2-003, onda 5)
+- task_id: T-F2-006 (exercitar duas aprovações, exceções e rollback de preço — SPEC-2-003, onda 6)
 - champion: Fábio
 - spec: 04_fase-atual/specs/spec-2-003-investimento-preco.md
-- etapa: concluida
-- autorizacao_implementacao: confirmada (2026-10-19, formulário "Pode implementar" com insumos I5/I6/I7 fechados pelo champion)
-- teste_humano: aprovado (2026-10-20, formulário: "Aprovar a T-F2-005" após conferência na tela — total 19.628,00 = subtotal da Cotação; Anvisa 1×; MO correta)
-- verificacao_automatica: passou (revalidação de encerramento do zero: TDD 20/20 PASS contra o motor v0.0.142 com Anvisa 1x por produto; script scripts/tf2005-tdd.py; relatorio 05_entregas/T-F2-005-investimento.md)
-- aprendizado: capturado:06_notas/aprendizado-continuo/AP-2026-10-19-1850-roteiro-teste-pelo-conteudo-real.md
-- ultima_acao: fechamento formal — revalidação 20/20 do zero; fase.md [x]; STATUS.md 5/8 (62,5%); changelog v12; decisão do champion: política de faturamento mínimo pode ser criada depois (flexível por julgamento do vendedor em projeto estratégico); comparação fica em revisao_de_preco até lá
-- proxima_acao: aguardar ordem do champion para abrir a T-F2-006 (duas aprovações, exceções e rollback de preço)
-- atualizado_em: 2026-10-20T19:40:00-03:00
+- etapa: implementando
+- autorizacao_implementacao: confirmada (2026-10-20 20:48, formulário "Aprovar tudo como recomendado" com D1=Gestor+admin, D2=duas sempre, D3=exceção só admin, D4=rollback gestor/admin com motivo, D5=sem vigência extra)
+- teste_humano: pendente (roteiro entregue 20/10 — Catálogo → Trilha de preço: propor, aprovar 2ª, rejeitar, rollback)
+- verificacao_automatica: passou (TDD REGRESSÃO CP-F2-008/009 22/22 PASS contra a trilha real v0.0.143; script scripts/tf2006-tdd.py; relatório 05_entregas/T-F2-006-trilha-preco-cenarios.md; prova de tela gestor/vendedor OK; preço do 125231 restaurado a 68,25)
+- aprendizado: pendente (triagem silenciosa antes de fechar)
+- ultima_acao: T-F2-006 IMPLEMENTADA v0.0.143 (QA OK): coleção trilha_preco (0025) + hook fail-closed (2ª aprovação pessoa distinta + papel oposto; exceção só admin na 2ª; rollback = novo registro; UPDATE sem acao negado) + seção Trilha de preço no Catálogo; TDD 22/22; prova de tela OK; pushes 1bff50c verificado
+- proxima_acao: reteste do champion (roteiro entregue) + aceite para concluir a T-F2-006
+- atualizado_em: 2026-10-20T22:35:00-03:00
 
 ---
 ## Insumos do champion (T-F2-005)
