@@ -5,12 +5,17 @@
 - spec: 04_fase-atual/specs/spec-2-003-investimento-preco.md
 - etapa: implementando
 - autorizacao_implementacao: confirmada (2026-10-20 20:48, formulário "Aprovar tudo como recomendado" com D1=Gestor+admin, D2=duas sempre, D3=exceção só admin, D4=rollback gestor/admin com motivo, D5=sem vigência extra)
-- teste_humano: pendente (roteiro entregue 20/10 — Catálogo → Trilha de preço: propor, aprovar 2ª, rejeitar, rollback)
+- teste_humano: pendente (Partes A–D testadas e OK pelo champion 22/10; Parte E compreendida após esclarecimento — exceção da trilha muda o preço de tabela para todos, exceção POR PEDIDO fica para a política I6; faltam: reteste das emendas de usabilidade v0.0.145 + aceite)
 - verificacao_automatica: passou (TDD REGRESSÃO CP-F2-008/009 22/22 PASS contra a trilha real v0.0.143; script scripts/tf2006-tdd.py; relatório 05_entregas/T-F2-006-trilha-preco-cenarios.md; prova de tela gestor/vendedor OK; preço do 125231 restaurado a 68,25)
 - aprendizado: pendente (triagem silenciosa antes de fechar)
-- ultima_acao: T-F2-006 IMPLEMENTADA v0.0.143 (QA OK): coleção trilha_preco (0025) + hook fail-closed (2ª aprovação pessoa distinta + papel oposto; exceção só admin na 2ª; rollback = novo registro; UPDATE sem acao negado) + seção Trilha de preço no Catálogo; TDD 22/22; prova de tela OK; pushes 1bff50c verificado
-- proxima_acao: reteste do champion (roteiro entregue) + aceite para concluir a T-F2-006
-- atualizado_em: 2026-10-20T22:35:00-03:00
+- ultima_acao: EMENDAS DE USABILIDADE v0.0.144–145 (pedido do champion 22/10): busca inteligente (ID/SKU/nome/linha, sem acento) + ordenador multi-campo com prioridade (1º/2º/3º, ↑/↓/remover) no Catálogo e na Trilha + seletor de produto da trilha pesquisável; fix da corrupção unicode do transporte MCP (normalizar em ASCII puro); prova na tela OK (hidrat=17 itens; ordenador aplicado; "exceção" com acento filtra a trilha)
+- proxima_acao: reteste das emendas de usabilidade pelo champion (busca "hidrat", ordenador Linha→Produto, seletor da trilha) + aceite para concluir a T-F2-006
+- atualizado_em: 2026-10-22T16:50:00-03:00
+
+---
+## Decisão do champion — exceção (20/10, teste T-F2-006)
+- A "exceção" da trilha de preço = alteração de preço com alçada do admin (efeito: muda o preco_kg para todos). TRILHA COMO ESTÁ.
+- Exceção de piso POR PEDIDO (vender abaixo do piso num projeto específico sem tocar o catálogo): entra junto com a política de investimento I6 quando cadastrada — bloco Investimento já tem o estado `excecao` previsto; motivo do vendedor + aprovação do admin (D3).
 
 ---
 ## Insumos do champion (T-F2-005)
