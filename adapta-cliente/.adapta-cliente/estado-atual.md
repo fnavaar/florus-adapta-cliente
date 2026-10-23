@@ -3,14 +3,14 @@
 - task_id: T-F2-006 (exercitar duas aprovações, exceções e rollback de preço — SPEC-2-003, onda 6)
 - champion: Fábio
 - spec: 04_fase-atual/specs/spec-2-003-investimento-preco.md
-- etapa: implementando
+- etapa: concluida
 - autorizacao_implementacao: confirmada (2026-10-20 20:48, formulário "Aprovar tudo como recomendado" com D1=Gestor+admin, D2=duas sempre, D3=exceção só admin, D4=rollback gestor/admin com motivo, D5=sem vigência extra)
-- teste_humano: pendente (Partes A–D testadas e OK pelo champion 22/10; Parte E compreendida após esclarecimento — exceção da trilha muda o preço de tabela para todos, exceção POR PEDIDO fica para a política I6; faltam: reteste das emendas de usabilidade v0.0.145 + aceite)
-- verificacao_automatica: passou (TDD REGRESSÃO CP-F2-008/009 22/22 PASS contra a trilha real v0.0.143; script scripts/tf2006-tdd.py; relatório 05_entregas/T-F2-006-trilha-preco-cenarios.md; prova de tela gestor/vendedor OK; preço do 125231 restaurado a 68,25)
-- aprendizado: pendente (triagem silenciosa antes de fechar)
-- ultima_acao: EMENDAS DE USABILIDADE v0.0.144–145 (pedido do champion 22/10): busca inteligente (ID/SKU/nome/linha, sem acento) + ordenador multi-campo com prioridade (1º/2º/3º, ↑/↓/remover) no Catálogo e na Trilha + seletor de produto da trilha pesquisável; fix da corrupção unicode do transporte MCP (normalizar em ASCII puro); prova na tela OK (hidrat=17 itens; ordenador aplicado; "exceção" com acento filtra a trilha)
-- proxima_acao: reteste das emendas de usabilidade pelo champion (busca "hidrat", ordenador Linha→Produto, seletor da trilha) + aceite para concluir a T-F2-006
-- atualizado_em: 2026-10-22T16:50:00-03:00
+- teste_humano: aprovado (2026-10-23, "Testei e está aprovado" — cobre as Partes A–D de 22/10 + emendas de usabilidade v0.0.145)
+- verificacao_automatica: passou (revalidação de encerramento 23/10: TDD REGRESSÃO CP-F2-008/009 re-executado do zero contra o sistema real — 22/22 PASS; relatório 05_entregas/T-F2-006-trilha-preco-cenarios.md)
+- aprendizado: capturado:06_notas/aprendizado-continuo/AP-2026-10-23-0705-corrupcao-unicode-transporte-mcp.md
+- ultima_acao: T-F2-006 CONCLUÍDA (aceite do champion 23/10 "Testei e está aprovado"; revalidação TDD 22/22 PASS; fase.md [x]; STATUS 6/8 75%)
+- proxima_acao: aguardar pedido do champion para analisar a T-F2-007 (auditoria, matriz de alçadas e fail-closed — SPEC-2-004, onda 7)
+- atualizado_em: 2026-10-23T07:10:00-03:00
 
 ---
 ## Decisão do champion — exceção (20/10, teste T-F2-006)
