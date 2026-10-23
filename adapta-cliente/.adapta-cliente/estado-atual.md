@@ -1,16 +1,16 @@
 # Estado atual — Adapta Cliente
 
-- task_id: T-F2-006 (exercitar duas aprovações, exceções e rollback de preço — SPEC-2-003, onda 6)
+- task_id: T-F2-007 (estender auditoria, matriz de alçadas e fail-closed às superfícies da Fase 2 — SPEC-2-004, onda 7)
 - champion: Fábio
-- spec: 04_fase-atual/specs/spec-2-003-investimento-preco.md
-- etapa: concluida
-- autorizacao_implementacao: confirmada (2026-10-20 20:48, formulário "Aprovar tudo como recomendado" com D1=Gestor+admin, D2=duas sempre, D3=exceção só admin, D4=rollback gestor/admin com motivo, D5=sem vigência extra)
-- teste_humano: aprovado (2026-10-23, "Testei e está aprovado" — cobre as Partes A–D de 22/10 + emendas de usabilidade v0.0.145)
-- verificacao_automatica: passou (revalidação de encerramento 23/10: TDD REGRESSÃO CP-F2-008/009 re-executado do zero contra o sistema real — 22/22 PASS; relatório 05_entregas/T-F2-006-trilha-preco-cenarios.md)
-- aprendizado: capturado:06_notas/aprendizado-continuo/AP-2026-10-23-0705-corrupcao-unicode-transporte-mcp.md
-- ultima_acao: T-F2-006 CONCLUÍDA (aceite do champion 23/10 "Testei e está aprovado"; revalidação TDD 22/22 PASS; fase.md [x]; STATUS 6/8 75%)
-- proxima_acao: aguardar pedido do champion para analisar a T-F2-007 (auditoria, matriz de alçadas e fail-closed — SPEC-2-004, onda 7)
-- atualizado_em: 2026-10-23T07:10:00-03:00
+- spec: 04_fase-atual/specs/spec-2-004-governanca-calculadora.md
+- etapa: aguardando_teste_humano
+- autorizacao_implementacao: confirmada (2026-10-23, formulário "Aprovar tudo como recomendado": matriz semente com as regras já decididas · só por papel por enquanto · plano aprovado)
+- teste_humano: pendente (roteiro entregue 23/10)
+- verificacao_automatica: passou (TDD CP-F2-010/011 via API: matriz 7/7, eventos nomeados ativos, fail-closed evidenciado na auditoria, negativas auditadas; regressão trilha/RLS OK; QA Skip completo OK v0.0.147–150; relatório 05_entregas/T-F2-007-auditoria-alcadas-fail-closed.md)
+- aprendizado: pendente (triagem silenciosa antes de fechar)
+- ultima_acao: T-F2-007 IMPLEMENTADA v0.0.146–150 (matriz de alçadas 0026/0028 + hook fail-closed + auditoria nomeada por superfície; TDD via API; provas no relatório)
+- proxima_acao: teste humano do champion (roteiro entregue) + aceite para concluir a T-F2-007
+- atualizado_em: 2026-10-23T07:50:00-03:00
 
 ---
 ## Decisão do champion — exceção (20/10, teste T-F2-006)
@@ -42,6 +42,10 @@
 - Emenda "Linhas e Fontes" (v0.0.101–104): coleção dominios (migration 0016) + semente (0017: 10 linhas jan-2025 + 4 fontes), hook validacao_dominios, tela ListaDominios (incluir/alterar/desativar), Linha/Fonte como Select no Catálogo.
 - Não alterar: Cotação (trava 16/09), campos travados do pedido (trava 26/08), coleções da Fase 1 (exceto leitura).
 - Padrões reutilizados da Fase 1: RLS por papel, auditoria server-side, hooks JSVM inline, exclusão negada (retenção), estados + substituido_por.
+
+---
+## Histórico — T-F2-006 (concluída em 2026-10-23)
+- v0.0.143 (coleção trilha_preco 0025 + hook fail-closed + seção no Catálogo); testes A–D OK 22/10; Parte E esclarecida (exceção da trilha = preço de tabela com alçada admin; exceção POR PEDIDO fica p/ I6); emendas de usabilidade v0.0.144–145 aprovadas; revalidação de encerramento TDD 22/22 PASS; aceite "Testei e está aprovado" 23/10; relatório 05_entregas/T-F2-006-trilha-preco-cenarios.md.
 
 ---
 ## Histórico — T-F2-004 (concluída em 2026-10-19)
