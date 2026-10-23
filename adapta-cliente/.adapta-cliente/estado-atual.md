@@ -5,12 +5,12 @@
 - spec: 04_fase-atual/specs/spec-2-004-governanca-calculadora.md
 - etapa: aguardando_teste_humano
 - autorizacao_implementacao: confirmada (2026-10-23, formulário "Aprovar tudo como recomendado": matriz semente com as regras já decididas · só por papel por enquanto · plano aprovado)
-- teste_humano: pendente (roteiro entregue 23/10)
-- verificacao_automatica: passou (TDD CP-F2-010/011 via API: matriz 7/7, eventos nomeados ativos, fail-closed evidenciado na auditoria, negativas auditadas; regressão trilha/RLS OK; QA Skip completo OK v0.0.147–150; relatório 05_entregas/T-F2-007-auditoria-alcadas-fail-closed.md)
+- teste_humano: pendente (roteiro entregue 23/10; Parte A testada e OK pelo champion 23/10; Parte B gerou debug — tela branca corrigida em v0.0.151, aguardando reteste)
+- verificacao_automatica: passou (TDD CP-F2-010/011 via API: matriz 7/7, eventos nomeados ativos, fail-closed evidenciado na auditoria, negativas auditadas; regressão trilha/RLS OK; QA Skip completo OK v0.0.147–151; relatório 05_entregas/T-F2-007-auditoria-alcadas-fail-closed.md)
 - aprendizado: pendente (triagem silenciosa antes de fechar)
-- ultima_acao: T-F2-007 IMPLEMENTADA v0.0.146–150 (matriz de alçadas 0026/0028 + hook fail-closed + auditoria nomeada por superfície; TDD via API; provas no relatório)
-- proxima_acao: teste humano do champion (roteiro entregue) + aceite para concluir a T-F2-007
-- atualizado_em: 2026-10-23T07:50:00-03:00
+- ultima_acao: DEBUG da Parte B do teste do champion — tela branca ao editar pedido legado 20261001-9001 (produtos/condicoes/eventos_integracao null → spread sobrescrevia o array do form → .filter() crashava em silêncio); FIX v0.0.151 (normalização defensiva no carregamento), provado na tela com o fluxo exato do champion (formulário carrega); "duplicado" esclarecido = versionamento v1/v2 por design
+- proxima_acao: reteste da Parte B pelo champion + aceite para concluir a T-F2-007
+- atualizado_em: 2026-10-23T08:10:00-03:00
 
 ---
 ## Decisão do champion — exceção (20/10, teste T-F2-006)
@@ -30,7 +30,7 @@
 - I1 fonte oficial: Tabela jan-2025 (a planilha que alimenta a Cotação)
 - I2 EMENDA AC-010: migrar TODAS as linhas de uma vez ("não vejo sentido em fazer isso em fases") — fim do conceito de linha piloto
 - I3 responsável por produto/preço: Fábio (admin)
-- I4 periodicidade: anual como padrão, mas vigência por item manda — padrão 31/12/2026, editável item a item
+- I4 periodicidade: anual como padrão, mas a vigência por item (campo de validade do custo) manda — tabela jan-2025 não tem coluna de validade, então vigência padrão 31/12/2026 editável por item
 - Industrialização e Serviços de Acabamento: parâmetros de custo (não migram como produtos)
 - Considerações 14/10 (21:00): ID/SKU só números (máscara separadora num passo futuro); botão Editar nos itens vigentes; nomes como na tabela original; categoria Outros extinta (11 itens realocados)
 - Considerações 14/10 (22:00): ID da linha de Industrialização = ID real da tabela (MO do tipo: perfume 13650, body splash 13651, aromatizador 13652) — fim do rótulo IND-
