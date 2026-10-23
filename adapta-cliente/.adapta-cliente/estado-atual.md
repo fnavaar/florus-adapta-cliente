@@ -5,12 +5,12 @@
 - spec: 04_fase-atual/specs/spec-2-004-governanca-calculadora.md
 - etapa: aguardando_teste_humano
 - autorizacao_implementacao: confirmada (2026-10-23, formulário "Aprovar tudo como recomendado": matriz semente com as regras já decididas · só por papel por enquanto · plano aprovado)
-- teste_humano: pendente (roteiro entregue 23/10; Parte A testada e OK pelo champion 23/10; Parte B gerou debug — tela branca corrigida em v0.0.151, aguardando reteste)
-- verificacao_automatica: passou (TDD CP-F2-010/011 via API: matriz 7/7, eventos nomeados ativos, fail-closed evidenciado na auditoria, negativas auditadas; regressão trilha/RLS OK; QA Skip completo OK v0.0.147–151; relatório 05_entregas/T-F2-007-auditoria-alcadas-fail-closed.md)
+- teste_humano: pendente (roteiro entregue 23/10; Parte A testada e OK pelo champion 23/10; Parte B gerou debug — tela branca corrigida em v0.0.151 e emenda da lista aprovada e implementada em v0.0.152; aguardando reteste)
+- verificacao_automatica: passou (TDD CP-F2-010/011 via API: matriz 7/7, eventos nomeados ativos, fail-closed evidenciado na auditoria, negativas auditadas; regressão trilha/RLS OK; QA Skip completo OK v0.0.147–152; relatório 05_entregas/T-F2-007-auditoria-alcadas-fail-closed.md)
 - aprendizado: pendente (triagem silenciosa antes de fechar)
-- ultima_acao: DEBUG da Parte B do teste do champion — tela branca ao editar pedido legado 20261001-9001 (produtos/condicoes/eventos_integracao null → spread sobrescrevia o array do form → .filter() crashava em silêncio); FIX v0.0.151 (normalização defensiva no carregamento), provado na tela com o fluxo exato do champion (formulário carrega); "duplicado" esclarecido = versionamento v1/v2 por design
-- proxima_acao: reteste da Parte B pelo champion + aceite para concluir a T-F2-007
-- atualizado_em: 2026-10-23T08:10:00-03:00
+- ultima_acao: EMENDA do champion (formulário 23/10) — Lista de Pedidos esconde versões substituídas (v0.0.152, filtro !substituido_por, mesmo comportamento do Pipe; histórico preservado no banco/auditoria); provado na tela (20261001-9001 aparece só na versão vigente, sem selo); antes disso: DEBUG tela branca v0.0.151 (produtos null no spread; fix normalização defensiva, provado na tela)
+- proxima_acao: reteste da Parte B pelo champion (edição da v1 abre sem tela branca) + aceite para concluir a T-F2-007
+- atualizado_em: 2026-10-23T08:55:00-03:00
 
 ---
 ## Decisão do champion — exceção (20/10, teste T-F2-006)
@@ -39,7 +39,7 @@
 ## Análise T-F2-001 (resumo para retomada)
 - Critérios: CA-2-001 (cadastro gera produto_id único com estado), CA-2-002 (campo mínimo ausente → pendente_aprovacao com pendência nomeada, nunca visível ao vendedor), CA-2-003 (sem fonte/vigência vencida → pendência explícita, última versão aprovada mantida).
 - Recorte entregue: migration 0015 criando coleção `produtos` (produto_id, nome, linha, SKU, unidade, densidade opcional, preco_kg, lote_minimo, taxas, fonte, vigência, status rascunho/pendente_aprovacao/aprovado/substituido, versao, substituido_por, responsável) com RLS (vendedor lê só aprovados; gestor/admin tudo; exclusão bloqueada) + hook de auditoria/validação + tela de cadastro/consulta + TDD CP-F2-001.
-- Emenda "Linhas e Fontes" (v0.0.101–104): coleção dominios (migration 0016) + semente (0017: 10 linhas jan-2025 + 4 fontes), hook validacao_dominios, tela ListaDominios (incluir/alterar/desativar), Linha/Fonte como Select no Catálogo.
+- Emenda "Linhas e Fontes" (v0.0.101–104): coleção dominios (migration 0016) + semente (0017: 10 linhas jan-2025 + 4 fontes), hook validacao_dominios, tela ListaPedidos escondendo versões substituídas desde a emenda do champion 23/10 (v0.0.152).
 - Não alterar: Cotação (trava 16/09), campos travados do pedido (trava 26/08), coleções da Fase 1 (exceto leitura).
 - Padrões reutilizados da Fase 1: RLS por papel, auditoria server-side, hooks JSVM inline, exclusão negada (retenção), estados + substituido_por.
 
