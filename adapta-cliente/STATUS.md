@@ -8,8 +8,8 @@
 
 - **Fase atual:** 2 — Cadastro governado e calculadora de viabilidade · liberada em 2026-10-02 pela consultoria, com autorização explícita de Felipe Navaar.
 - **Objetivo:** governar catálogo, composição/lote, investimento/preço e auditoria da calculadora.
-- **Tasks:** 6/8 (75%) — T-F2-001 a T-F2-006 concluídas e aprovadas pelo champion (09/10 a 23/10; T-F2-006 aceite "Testei e está aprovado" 23/10, com emendas de usabilidade v0.0.145 aprovadas e revalidação TDD 22/22 PASS).
-- **Em andamento:** T-F2-007 (SPEC-2-004, onda 7) — implementada v0.0.146–150 em 23/10: matriz de alçadas (0026/0028, 7 alçadas das decisões fechadas) + hook fail-closed (produtos/investimento) + auditoria nomeada por superfície (fecha o achado da T-F2-004); TDD via API com fail-closed evidenciado; aguardando teste humano do champion. Última: T-F2-006 concluída 23/10 (aceite "Testei e está aprovado"). Política de faturamento mínimo: decisão do champion 20/10 — pode ser criada depois; comparação fica em revisao_de_preco até lá. Exceção de piso POR PEDIDO: entra junto com a política I6 (estado `excecao` já previsto no bloco Investimento); a exceção da trilha segue como alteração com alçada do admin.
+- **Tasks:** 7/8 (87,5%) — T-F2-001 a T-F2-007 concluídas e aprovadas pelo champion (09/10 a 23/10; T-F2-007 aceite 23/10: Parte A OK + Parte B retestada após debug v0.0.151 "Funcionou" + emenda da lista v0.0.152; revalidação de encerramento 7/7 PASS).
+- **Em andamento:** nenhuma — próxima task elegível: T-F2-008 (SPEC-2-004, onda 8 — rollback transversal, fila de pendências e exportação CSV da trilha; última da fase, após T-F2-007). Última: T-F2-007 concluída 23/10 (aceite "Pode seguir"). Política de faturamento mínimo: decisão do champion 20/10 — pode ser criada depois; comparação fica em revisao_de_preco até lá. Exceção de piso POR PEDIDO: entra junto com a política I6 (estado `excecao` já previsto no bloco Investimento); a exceção da trilha segue como alteração com alçada do admin.
 - **Fase 1:** encerrada, 12/12 tasks aceitas; unidade preservada em `05_entregas/fase-1/`.
 - Executar uma task por vez com prova e teste humano do champion antes de avançar.
 
